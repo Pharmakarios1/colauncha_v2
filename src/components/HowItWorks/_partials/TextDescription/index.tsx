@@ -1,0 +1,92 @@
+import { Button, Card, Divider, Typography } from 'antd';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { useNavigate } from 'react-router';
+
+const HowItWorksTexts = () => {
+  const navigate = useNavigate();
+  const handleNavigationClick = () => {
+    navigate('/dashboard');
+  };
+  const animationStates = {
+    hidden: { opacity: 0, y: -50 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+    threshold: 0.2
+  });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={inView ? 'visible' : 'hidden'}
+      variants={animationStates}
+      transition={{ duration: 0.9 }}
+      whileInView="inView"
+      className="mt-10 md:mt-0 flex flex-col items-center w-full md:w-[85%] mx-auto px-10 md:px-0"
+    >
+      <Divider
+        className=" !text-3xl text-blue-900 font-bold  md:!text-4xl"
+        variant="solid"
+        style={{ borderColor: 'blue' }}
+      >
+        How It <span className="text-blue-900">Works</span>
+      </Divider>
+
+      <Card>
+        <Typography className="my-2 text-center">
+          Your Path to a Fully-Developed MVP, Simplified!
+        </Typography>
+        <p className="text-center  text-[12px] ">
+          With Colauncha, you’re not just building a product—you’re partnering
+          for success.
+        </p>
+      </Card>
+      <motion.p
+        variants={animationStates}
+        whileHover={{
+          scale: 1.05,
+          color: 'blue',
+          transition: { type: 'spring', stiffness: 300 }
+        }}
+        className="text-left text-sm mb-2 "
+      >
+        Our streamlined process ensures that your MVP is not only developed
+        efficiently but also tailored to your unique vision. From ideation to
+        execution, we’re with you every step of the way. Our dedicated team of
+        experts is committed to delivering a product that not only meets your
+        expectations but exceeds them.{' '}
+      </motion.p>
+      <motion.p
+        variants={animationStates}
+        whileHover={{
+          scale: 1.05,
+          color: 'blue',
+          transition: { type: 'spring', stiffness: 300 }
+        }}
+        className="text-left text-sm"
+      >
+        We understand that every project is unique, and we take the time to
+        understand your specific needs and goals. Our team of experts will work
+        closely with you to ensure that your MVP is not only functional but also
+        user-friendly and visually appealing.
+      </motion.p>
+      <p className="mt-5">Book your talents to get started.</p>
+
+      <Button
+        onClick={handleNavigationClick}
+        type="primary"
+        ghost
+        className="mt-2 !w-full md:!w-[200px] !border-1 !border-blue-900 !bg-white !text-blue-900 hover:!bg-blue-900 hover:!text-white transition-all duration-300"
+        size="large"
+      >
+        Book here
+      </Button>
+    </motion.div>
+  );
+};
+
+export default HowItWorksTexts;
