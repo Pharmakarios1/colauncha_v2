@@ -17,7 +17,7 @@ import TalentRequest from '@components/DashboardData/_partials/JoinAsATalent';
 import UploadProposal from '@components/DashboardData/_partials/Proposals';
 import Logout from '@components/DashboardData/_partials/Logout';
 import Error404 from '@components/ErrorHandler/Error404';
-// import { items } from "@pages/Dashboard";
+
 
 const queryClient = new QueryClient();
 
@@ -27,7 +27,7 @@ const App = () => {
   const antTheme = {
     token: {
       colorPrimary: primaryColor,
-      fontFamily: 'Inter, sans-serif',
+      fontFamily: 'Poppins, sans-serif',
       colorLink: primaryColor,
       colorBorder: '#e5e7eb',
       borderRadius: 8,
@@ -42,7 +42,12 @@ const App = () => {
         colorBgContainer: '#F7F5BC7D',
         colorText: primaryColor,
         colorTextHeading: primaryColor
-      }
+      },
+      Button: {
+        colorBgContainer: '#3783FF',
+        colorBorder: primaryColor,
+        colorText: '#FFFFFF',
+      },
     }
   };
   return (

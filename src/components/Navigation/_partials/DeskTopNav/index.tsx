@@ -43,21 +43,10 @@ const DeskTopNav: React.FC = () => {
   };
   // style for the menu items
   const menuStyle = {
-    all: 'text-white text-lg font-semibold hover:border-b-2 border-blue-500 transition duration-300',
+    all: 'text-[#3783FF] text-lg font-semibold hover:border-b-2 border-blue-500 transition duration-300',
     selected: 'text-blue-500 border-b-2 border-blue-500'
   };
-  // function to handle scroll
-  // const { scrollY } = useScroll();
-  // const y = useTransform(scrollY, [0, 100], [0, -100]);
-  // const opacity = useTransform(scrollY, [0, 100], [1, 0]);
-  // const scale = useTransform(scrollY, [0, 100], [1, 0.8]);
-  // const rotate = useTransform(scrollY, [0, 100], [0, 360]);
-  // const x = useTransform(scrollY, [0, 100], [0, -100]);
-  // const y2 = useTransform(scrollY, [0, 100], [0, -100]);
-  // const opacity2 = useTransform(scrollY, [0, 100], [1, 0]);
-  // const scale2 = useTransform(scrollY, [0, 100], [1, 0.8]);
-  // const rotate2 = useTransform(scrollY, [0, 100], [0, 360]);
-  // const x2 = useTransform(scrollY, [0, 100], [0, -100]);
+  
   return (
     <div className="flex flex-col gap-8 md:flex-row md:gap-4 ">
       {menuItems.map((item, index) => {

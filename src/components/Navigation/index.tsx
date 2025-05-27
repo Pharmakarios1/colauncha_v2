@@ -31,12 +31,12 @@ const Navigation = () => {
     onClose();
   };
   return (
-    <div className="w-full h-18 sticky top-0 z-20 bg-blue-900 shadow-lg flex items-center justify-between px-4">
+    <div className="w-full backdrop-blur-2xl h-18 sticky top-0 z-20 shadow-lg flex items-center justify-between px-4">
       <Link to="/">
         <img
-          src="/png/colauncha_logo.png"
+          src="/png/logo.png"
           alt="colauncha_logo"
-          className="w-36 sm:w-full "
+          className="w-16 h-16 sm:w-full "
         />
       </Link>
       <div className="hidden md:flex ">
@@ -45,10 +45,13 @@ const Navigation = () => {
 
       <div className="flex items-center gap-4">
         <motion.button
-          initial={{ scale: 1 }}
-          animate={{ scale: 1.1, transition: { duration: 0.4 } }}
+          initial={{ scale: 1.3, opacity: 0.5 }}
+          animate={{ scale: 1, opacity: 1, transition: { duration: 0.6 } }}
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: 'spring', stiffness: 300 }}
           onClick={handleTalentRequest}
-          className="hidden cursor-pointer md:flex bg-blue-500 text-white text-nowrap px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300"
+          className="hidden cursor-pointer md:flex bg-blue-500 text-white text-sm text-nowrap px-4 py-2 rounded-4xl hover:bg-blue-600 transition duration-300"
         >
           Get Started
         </motion.button>
