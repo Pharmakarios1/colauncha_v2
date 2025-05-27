@@ -109,7 +109,7 @@ const ScrollLeft = () => {
             <img
               className="w-16 object-contain"
               key={index}
-              src={`public/png/${skill.name}.png`}
+              src={`/png/${skill.name}.png`}
             />
           ))}
         </div>
@@ -118,7 +118,7 @@ const ScrollLeft = () => {
             <img
               className="w-16 object-contain"
               key={index}
-              src={`public/png/${skill.name}.png`}
+              src={`/png/${skill.name}.png`}
             />
           ))}
         </div>
