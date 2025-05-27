@@ -7,7 +7,7 @@ import { Card, Typography } from 'antd';
 
 const Contact = () => {
   return (
-    <div className="mt-40 max-h-[500px] flex flex-col bg-[#FF8C00B5] py-3 px-10 md:py-10 md:px-20">
+    <div className="mt-40 max-h-[500px] flex flex-col bg-[#F60000] py-3 px-10 md:py-10 md:px-20">
       <Typography.Title
         level={2}
         className="text-center md:text-left text-white"

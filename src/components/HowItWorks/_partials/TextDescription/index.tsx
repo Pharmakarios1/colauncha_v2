@@ -63,7 +63,7 @@ const HowItWorksTexts = () => {
       <motion.p
         variants={animationStates}
         whileHover={{
-          scale: 1.05,
+          scale: 1.01,
           color: 'blue',
           transition: { type: 'spring', stiffness: 300 }
         }}
@@ -80,7 +80,7 @@ const HowItWorksTexts = () => {
         onClick={handleNavigationClick}
         type="primary"
         ghost
-        className="mt-2 !w-full md:!w-[200px] !border-1 !border-blue-900 !bg-white !text-blue-900 hover:!bg-blue-900 hover:!text-white transition-all duration-300"
+        className="mt-4 !w-full md:!w-[200px] !rounded-full !text-white !bg-blue-700 hover:!bg-blue-800"
         size="large"
       >
         Book here
