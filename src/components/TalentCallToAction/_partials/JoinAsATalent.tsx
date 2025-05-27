@@ -1,15 +1,14 @@
-import { Typography, Divider, Button } from 'antd';
+import { Divider, Button } from 'antd';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router';
 
-const { Text } = Typography;
 const JoinAsATalent = () => {
   const navigate = useNavigate();
   const handleNavigationClick = () => {
     navigate('/dashboard');
   };
- const animationStates = {
+  const animationStates = {
     hidden: { opacity: 0, y: -50 },
     show: { opacity: 1, y: 0 }
   };
@@ -43,9 +42,7 @@ const JoinAsATalent = () => {
         creativity. Our network of tech teams undergoes a rigorous screening and
         are matched based on the needs of each project
       </p>
-      {/* <Text className="!text-white text-lg mt-4 text-shadow-initial text-center md:text-left">
-        Ready to take the leap?
-      </Text> */}
+     
       <Button
         onClick={handleNavigationClick}
         type="text"
