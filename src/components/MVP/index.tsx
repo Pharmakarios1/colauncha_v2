@@ -1,5 +1,4 @@
-import { Card, Carousel, Image, Space, Typography } from 'antd';
-import ScrollLeft from './InfiniteScroll';
+import { Link } from 'react-router';
 
 const mvpData = [
   {
@@ -10,59 +9,43 @@ const mvpData = [
       'Discover treasures at Biddius - where bidding meets buying. Join online auctions and find unique items to buy and sell with excitement!'
   },
   {
-    image: '/png/fixServ.png',
-    title: 'fIxServ',
+    image: '/png/fixServe.png',
+    title: 'FixServ',
     path: 'www.fixServ.com',
     description:
       'FixServ is a digital marketplace that connects users with professional artisans specializing in gadget repairs and services.'
+  },
+  {
+    image: '/png/phlouriche.png',
+    title: 'Plouriche NG ',
+    path: 'www.phlouriche.com',
+    description:
+      'Phlouriche Nigeria Limited is a trusted partner in delivering innovative engineering solutions tailored for the energy sector.'
   }
 ];
-const { Meta } = Card;
-const { Text } = Typography;
 
 const MVP = () => {
   return (
     <div className="my-10 md:mt-0 w-[90%]  md:w-[85%] mx-auto">
-      <h2 className="text-3xl  font-bold mb-10">MVPs</h2>
-      <div>
-        <Carousel
-          autoplay
-          infinite
-          autoplaySpeed={10000}
-          dots={false}
-          className=""
-        >
-          {mvpData.map((item, index) => (
-            <Card
-              hoverable
-              cover={
-                <Image.PreviewGroup
-                  items={[
-                    {
-                      src: item.image,
-                      alt: 'example'
-                    }
-                  ]}
-                >
-                  <Image
-                    src={item.image}
-                    alt="img"
-                    className="!h-[300px] md:!w-[80%] mx-auto"
-                  />
-                </Image.PreviewGroup>
-              }
-              key={index}
-              className="flex items-center"
-            >
-              <Meta title={item?.title} description={item?.path} />
-              <Space direction="vertical" size={10} className="mt-5" />
-
-              <Text className="text-center mt-5">{item.description}</Text>
-            </Card>
-          ))}
-        </Carousel>
+      <div className="flex">
+        <h2 className="text-xl  font-bold mb-10">Built MVPs</h2>
+        <Link to="/mvp" className="ml-auto text-blue-600 hover:underline">
+          View All
+        </Link>
       </div>
-      <ScrollLeft />
+      <div className="w-full  mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+        {mvpData.map((item, index) => (
+          <Link
+            to={item.path}
+            className="w-full shadow-md p-3 rounded-sm"
+            key={index}
+          >
+            <img src={item.image} alt="mvp_img" />
+            <h3 className="font-bold my-3">{item.title}</h3>
+            <p className="text-sm">{item.description}</p>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

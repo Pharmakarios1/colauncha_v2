@@ -54,7 +54,7 @@ export const items = [
 ];
 
 const Dashboard = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const navigate = useNavigate();
   const handleSiderCollapse = (collapsed: boolean) => {
     setCollapsed(!collapsed);
