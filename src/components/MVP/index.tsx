@@ -1,24 +1,25 @@
+import { LinkOutlined } from '@ant-design/icons';
 import { Link } from 'react-router';
 
 const mvpData = [
   {
     image: 'png/biddius.png',
     title: 'Biddius',
-    path: 'www.biddius.com',
+    path: 'http://www.biddius.com',
     description:
       'Discover treasures at Biddius - where bidding meets buying. Join online auctions and find unique items to buy and sell with excitement!'
   },
   {
     image: '/png/fixServe.png',
     title: 'FixServ',
-    path: 'www.fixServ.com',
+    path: 'http://www.fixServ.com',
     description:
       'FixServ is a digital marketplace that connects users with professional artisans specializing in gadget repairs and services.'
   },
   {
     image: '/png/phlouriche.png',
     title: 'Plouriche NG ',
-    path: 'www.phlouriche.com',
+    path: 'http://www.phlouriche.com',
     description:
       'Phlouriche Nigeria Limited is a trusted partner in delivering innovative engineering solutions tailored for the energy sector.'
   }
@@ -35,15 +36,23 @@ const MVP = () => {
       </div>
       <div className="w-full  mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
         {mvpData.map((item, index) => (
-          <Link
-            to={item.path}
+          <a
+            href={item.path}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full shadow-md p-3 rounded-sm"
             key={index}
           >
             <img src={item.image} alt="mvp_img" />
-            <h3 className="font-bold my-3">{item.title}</h3>
+            <div className="flex justify-between items-center">
+              {' '}
+              <h3 className="font-bold my-3">{item.title}</h3>{' '}
+              <span className="text-blue-600 hover:underline">
+                <LinkOutlined />
+              </span>
+            </div>
             <p className="text-sm">{item.description}</p>
-          </Link>
+          </a>
         ))}
       </div>
     </div>

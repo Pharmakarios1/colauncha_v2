@@ -18,10 +18,10 @@ const itemVariants = {
 
 const AboutUs = () => {
   return (
-    <Card className="grid sm:grid-cols-1">
+    <Card className="grid sm:grid-cols-1 !bg-slate-100 ">
       <div className="flex flex-col items-center  min-h-screen bg-gray-100">
         <h1 className="text-4xl font-bold mb-4">About Us</h1>
-        <p className="text-lg text-center max-w-2xl">
+        <p className="text-lg text-center my-3 max-w-2xl">
           We empower startups with the right talents
         </p>
         <AnimatePresence>
@@ -53,7 +53,7 @@ const AboutUs = () => {
           </div>
         </AnimatePresence>
         <motion.div
-          className="flex flex-col items-center justify-center mx-auto w-[70%] mt-4"
+          className="flex flex-col  mx-auto w-[70%] mt-6 md:my-14"
           variants={containerVariants}
           initial="hidden"
           animate="show"

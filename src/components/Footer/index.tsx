@@ -45,7 +45,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <InstagramFilled style={{ fontSize: '20px', color: '#c1558b' }} />
+              <InstagramFilled style={{ fontSize: '20px', color: '' }} />
             </a>
             <a
               href="https://www.linkedin.com/company/colauncha/"
