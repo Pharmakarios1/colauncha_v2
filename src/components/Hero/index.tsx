@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 
 //animation
-const textVariants = {
+const textContainer = {
   hidden: {
     opacity: 0,
     scale: 0.5
@@ -86,14 +86,14 @@ const Hero = () => {
   };
   return (
     <div
-      className="relative h-screen bg-cover bg-center"
+      className="relative h-[60vh] md:h-screen bg-cover bg-center"
       style={{ backgroundImage: `url('/png/heroMod.png')` }}
     >
       <div className="absolute inset-0 bg-black/50"></div>
 
       <div className="relative z-10 flex h-full items-center justify-center text-center text-white">
         <motion.div
-          variants={textVariants}
+          variants={textContainer}
           initial="hidden"
           animate="visible"
           whileInView="inView"
