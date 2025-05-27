@@ -86,7 +86,7 @@ const Hero = () => {
   };
   return (
     <div
-      className="relative h-[60vh] md:h-screen bg-cover bg-center"
+      className="relative h-[73vh] md:h-screen bg-cover bg-center"
       style={{ backgroundImage: `url('/png/heroMod.png')` }}
     >
       <div className="absolute inset-0 bg-black/50"></div>

@@ -11,14 +11,14 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose, open }) => {
   return (
     <>
       <Drawer
-        title={<img src="/png/colauncha_logo.png" className="w-44" />}
+        title={<img src="/png/logo.png" className="w-24 h-24" />}
         onClose={onClose}
         open={open}
         placement="top"
-        height={600}
-        className="!bg-blue-900 text-white"
+        height={700}
+        className="!bg-blue-900 text-white !p-0 !shadow-lg"
       >
-        <div className="w-[280px] mx-auto md:w-0 md:mx-0">
+        <div className="w-[350px] pt-12 mx-auto md:w-0 md:mx-0">
           <DeskTopNav />
         </div>
       </Drawer>
