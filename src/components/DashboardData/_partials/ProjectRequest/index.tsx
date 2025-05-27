@@ -1,5 +1,5 @@
 //api calls
-import { useMutation, UseMutationResult } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import submitProjectRequest from 'api/ProjectApi';
 //third party
 import { Button, Form, Input } from 'antd';
@@ -9,7 +9,7 @@ import { InboxOutlined } from '@ant-design/icons';
 import { message, Upload } from 'antd';
 import { useState } from 'react';
 
-interface ProjectRequestFormData {
+ export interface ProjectRequestFormData {
   name: string;
   email: string;
   phone: string;
@@ -19,10 +19,31 @@ interface ProjectRequestFormData {
   companyName: string;
   requiredTechnologies: string;
   projectDescription: string;
+  uploadedFiles?: string[];
 }
 
+interface FormValues {
+  name: string;
+  email: string;
+  phone: string;
+  'project-name': string;
+  'estimated-budget': string;
+  'project-duration': string;
+  'company-name': string;
+  'required-technologies': string;
+  'project-description': string;
+}
+
+// uploadedFiles will hold the file metadata
+type UploadedFile = {
+  uid: string;
+  name: string;
+  size: number;
+  type: string;
+} & File;
+
 const ProjectRequest = () => {
-  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
   const [form] = Form.useForm();
   const { Dragger } = Upload;
 
@@ -31,7 +52,7 @@ const ProjectRequest = () => {
     name: 'file',
     multiple: true,
     beforeUpload(file) {
-      setUploadedFiles((prev) => [...prev, file]);
+      setUploadedFiles((prev) => [...prev, file as UploadedFile]);
       return false; // prevent auto upload
     },
     onRemove(file) {
@@ -43,7 +64,7 @@ const ProjectRequest = () => {
   };
 
   // async fxn to handle file uploads to mock Api
-  const uploadFiles = async (files: File[]): Promise<string[]> => {
+  const uploadFiles = async (files: UploadedFile[]): Promise<string[]> => {
     const uploadedUrls: string[] = [];
     for (const file of files) {
       const formData = new FormData();
@@ -62,25 +83,27 @@ const ProjectRequest = () => {
   };
 
   // mutation to handle project request submission
-  const mutation = useMutation<any, Error, ProjectRequestFormData>({
+  const mutation = useMutation<void, Error, ProjectRequestFormData>({
     mutationFn: submitProjectRequest,
     onSuccess: () => {
       message.success('Project Request Submitted Successfully!');
       form.resetFields(); // Clear the form
+      setUploadedFiles([]); // Clear uploaded files
     },
     onError: () => {
       message.error('Something went wrong. Please try again.');
     }
   });
+
   // handle form submission
-  const onFinish = async (values: any) => {
+  const onFinish = async (values: FormValues) => {
     try {
       let uploadedUrls: string[] = [];
       if (uploadedFiles.length > 0) {
         uploadedUrls = await uploadFiles(uploadedFiles);
       }
 
-      const formattedValues = {
+      const formattedValues: ProjectRequestFormData = {
         name: values.name,
         email: values.email,
         phone: values.phone,
@@ -90,7 +113,7 @@ const ProjectRequest = () => {
         companyName: values['company-name'],
         requiredTechnologies: values['required-technologies'],
         projectDescription: values['project-description'],
-        uploadedFiles: uploadedUrls // <-- attach uploaded file URLs
+        uploadedFiles: uploadedUrls
       };
 
       mutation.mutate(formattedValues);
@@ -119,7 +142,7 @@ const ProjectRequest = () => {
             name="name"
             rules={[{ required: true, message: 'Please Enter your Name' }]}
           >
-            <Input size="large" placeholder="Name" />
+            <Input size="large" placeholder="Name" autoComplete="auto" />
           </Form.Item>
           <Form.Item
             name="email"
@@ -134,7 +157,12 @@ const ProjectRequest = () => {
               { required: true, message: 'Please Enter your Phone Number' }
             ]}
           >
-            <PhoneInput size="large" placeholder="Phone number" enableSearch />
+            <PhoneInput
+              size="large"
+              placeholder="Phone number"
+              enableSearch
+              country="ng" // Default country can be set to 'ng' for Nigeria
+            />
           </Form.Item>
           <Form.Item
             name="project-name"
@@ -222,7 +250,7 @@ const ProjectRequest = () => {
           form="project-request-form"
           className="flex-1  !h-[50px] !w-[200px]"
           size="large"
-          // loading={mutation.isLoading}
+          loading={mutation.isPending} // Changed from isLoading to isPending for newer versions
         >
           Submit
         </Button>

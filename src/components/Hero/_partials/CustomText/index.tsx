@@ -1,5 +1,5 @@
 import { Button, Carousel } from 'antd';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router';
 
 const carouselData = [

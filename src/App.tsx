@@ -12,10 +12,10 @@ import ContactUs from '@pages/ContactUs';
 import OurTeam from '@pages/OurTeam';
 import Navigation from '@components/Navigation';
 import Dashboard from '@pages/Dashboard';
-import ProjectRequest from '@components/Dashboard/_partials/ProjectRequest';
-import TalentRequest from '@components/Dashboard/_partials/JoinAsATalent';
-import UploadProposal from '@components/Dashboard/_partials/Proposals';
-import Logout from '@components/Dashboard/_partials/Logout';
+import ProjectRequest from '@components/DashboardData/_partials/ProjectRequest';
+import TalentRequest from '@components/DashboardData/_partials/JoinAsATalent';
+import UploadProposal from '@components/DashboardData/_partials/Proposals';
+import Logout from '@components/DashboardData/_partials/Logout';
 import Error404 from '@components/ErrorHandler/Error404';
 // import { items } from "@pages/Dashboard";
 

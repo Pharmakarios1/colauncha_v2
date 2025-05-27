@@ -26,7 +26,7 @@ const JoinAsATalent = () => {
       animate={inView ? 'show' : 'hidden'}
       variants={animationStates}
       transition={{ duration: 0.9 }}
-      className="flex flex-col gap-8 mt-10"
+      className="flex flex-col gap-8 mt-10 w-[90%] mx-auto md-full"
     >
       <Divider
         className="text-center !text-3xl md:!text-4xl mt-5 uppercase !text-white !font-bold !border-white"

@@ -1,5 +1,4 @@
 import { ArrowLeftOutlined } from '@ant-design/icons';
-import React from 'react';
 import { useNavigate } from 'react-router';
 
 const Error404 = () => {
@@ -9,7 +8,7 @@ const Error404 = () => {
     navigate('/');
   };
   return (
-    <div className='mt-12'>
+    <div className="mt-12">
       <img
         src="/png/mvp.png"
         alt="404 Error"
@@ -24,8 +23,10 @@ const Error404 = () => {
           boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)'
         }}
       />
-      <h1 className="text-xl font-bold text-center text-red-500">404 - Page Not Found</h1>
-      <p className='text-center text-gray-600 text-[10px] sm:text-base'>
+      <h1 className="text-xl font-bold text-center text-red-500">
+        404 - Page Not Found
+      </h1>
+      <p className="text-center text-gray-600 text-[10px] sm:text-base">
         Sorry, the page you are looking for does not exist.
       </p>
       <p
