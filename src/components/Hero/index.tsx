@@ -1,47 +1,41 @@
 import { Button } from 'antd';
 import { useNavigate } from 'react-router';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
-//animation
-const textContainer = {
-  hidden: {
-    opacity: 0,
-    scale: 0.5
+// Array of background images
+const backgroundImages = [
+  '/png/heroMod.png',
+  '/png/heroMod2.png',
+  '/png/heroMod3.png',
+  '/png/heroMod4.png'
+];
+
+// Animation configurations for background transitions
+const backgroundVariants = {
+  enter: {
+    opacity: 0.9,
+    scale: 1.05
   },
-  visible: {
+  center: {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: 0.9,
-      ease: 'easeInOut'
+      duration: 6,
+      ease: [0.1, 0.4, 0.68, 1]
     }
   },
-  inView: {
-    opacity: 1,
+  exit: {
+    opacity: 0,
     scale: 1,
     transition: {
-      duration: 0.95,
-      ease: 'easeInOut'
+      duration: 2.5,
+      ease: [0.1, 0.4, 0.68, 1]
     }
   }
 };
-const textChildren = {
-  hidden: {
-    opacity: 0,
-    y: 20
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      delay: 0.1,
-      ease: 'easeInOut',
-      staggerChildren: 0.1
-    }
-  }
-};
-const buttonBounce = {
+// button animation variants
+const animateBtn = {
   initial: {
     opacity: 0,
     x: -200
@@ -81,23 +75,71 @@ const buttonBounce = {
 };
 const Hero = () => {
   const navigate = useNavigate();
-  const handleNavigationClick = () => {
-    navigate('/dashboard');
-  };
-  return (
-    <div
-      className="relative h-[73vh] md:h-screen bg-cover bg-center"
-      style={{ backgroundImage: `url('/png/heroMod.png')` }}
-    >
-      <div className="absolute inset-0 bg-black/50"></div>
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [nextImageIndex, setNextImageIndex] = useState(1);
 
-      <div className="relative z-10 flex h-full items-center justify-center text-center text-white">
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) =>
+        prev === backgroundImages.length - 1 ? 0 : prev + 1
+      );
+      setNextImageIndex((prev) =>
+        prev === backgroundImages.length - 1 ? 0 : prev + 1
+      );
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Preload next image
+  useEffect(() => {
+    const img = new Image();
+    img.src = backgroundImages[nextImageIndex];
+  }, [nextImageIndex]);
+
+  return (
+    <div className="relative h-[73vh] md:h-screen overflow-hidden ">
+      {/* Current Background */}
+      <motion.div
+        key={`current-${currentImageIndex}`}
+        initial="enter"
+        animate="center"
+        exit="exit"
+        variants={backgroundVariants}
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${backgroundImages[currentImageIndex]})`,
+          zIndex: 10
+        }}
+      >
+        <div className="absolute inset-0 bg-black/50"></div>
+      </motion.div>
+
+      {/* Next Background (pre-rendered for smooth transition) */}
+      <AnimatePresence>
+        {nextImageIndex !== currentImageIndex && (
+          <motion.div
+            key={`next-${nextImageIndex}`}
+            initial="enter"
+            animate="center"
+            variants={backgroundVariants}
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${backgroundImages[nextImageIndex]})`,
+              zIndex: 5
+            }}
+          >
+            <div className="absolute inset-0 bg-black/50"></div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Content */}
+      <div className="relative z-20 flex h-full items-center justify-center text-center text-white">
         <motion.div
-          variants={textContainer}
-          initial="hidden"
-          animate="visible"
-          whileInView="inView"
-          viewport={{ once: false, amount: 0.2 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
           className="max-w-3xl px-4"
         >
           <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl">
@@ -105,9 +147,9 @@ const Hero = () => {
             Right <span className="text-red-500">Talent</span>
           </h1>
           <motion.p
-            variants={textChildren}
-            initial="hidden"
-            animate="visible"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
             className="mt-4 text-[12px] sm:text-lg"
           >
             Empowering founders with a{' '}
@@ -115,19 +157,19 @@ const Hero = () => {
             your <span className="text-yellow-200">vision</span> to life
           </motion.p>
           <motion.div
-            variants={buttonBounce}
-            initial="hidden"
-            animate="visible"
-            whileHover="hover"
+            variants={animateBtn}
+            initial="initial"
+            animate="animate"
             whileInView="inView"
-            whileTap={`Tap`}
+            whileHover="hover"
+            whileTap="Tap"
+            transition={{ delay: 0.6, duration: 0.9 }}
           >
             <Button
-              className="mt-6 rounded-2xl! px-12!"
+              className="mt-16 rounded-2xl! px-12!"
               size="large"
-              disabled={false}
               type="primary"
-              onClick={handleNavigationClick}
+              onClick={() => navigate('/dashboard')}
             >
               Get started
             </Button>
