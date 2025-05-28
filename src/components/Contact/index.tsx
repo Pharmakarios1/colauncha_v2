@@ -1,5 +1,4 @@
 import {
-  EnvironmentOutlined,
   MailOutlined,
   PhoneOutlined,
   VerticalAlignBottomOutlined
@@ -13,7 +12,7 @@ const Contact = () => {
     navigate('/contact');
   };
   return (
-    <div className="mt-40 max-h-[500px] flex flex-col bg-[#F60000] py-3 px-10 md:py-10 md:px-20">
+    <div className="mt-40 max-h-[500px] flex flex-col bg-[#C4C4C426] py-3 px-10 md:py-10 md:px-20">
       <Typography.Title
         level={2}
         className="text-center md:text-left text-white"
@@ -21,12 +20,21 @@ const Contact = () => {
         Contact Us
       </Typography.Title>
       <div className="flex flex-col md:flex-row gap-5 md:gap-10 md:mt-10 ">
-        <Card className="w-full md:w-1/2 max-h-[200px] p-5 rounded-lg !bg-red-800 !shadow-2xl !border-red-500">
+        <Card className="w-full md:w-full max-h-[200px] p-5 rounded-lg !bg-[#F49090] !shadow-4xl !border-[#F49090] ">
           <Typography.Paragraph className="md:text-left">
-            <Typography.Text className="text-[11px] md:text-base !text-white">
-              We are here to help you with any questions or concerns you may
-              have. Our team is dedicated to providing you with the support you
-              need to make the most of our platform.
+            <Typography.Text className="text-[11px] md:text-base ">
+              Stay updated with the latest news, resources, and events. Get
+              insightful articles, tips, and more delivered to your inbox.
+              <div className="grid grid-cols-1 lg:grid-cols-5 mt-2">
+                <div>
+                  <MailOutlined className="!text-blue-500 !text-lg" />
+                  <span className="ml-2">Info@colauncha.com</span>
+                </div>
+                <div>
+                  <PhoneOutlined className="!text-blue-500 !text-lg" />
+                  <span className="ml-2"> +23498356672867</span>
+                </div>
+              </div>
               <p
                 onClick={handleNavigation}
                 className="mt-2 text-right !text-white cursor-pointer hover:underline"
@@ -35,33 +43,6 @@ const Contact = () => {
               </p>
             </Typography.Text>
           </Typography.Paragraph>
-        </Card>
-
-        <Card className="w-full md:w-1/2 max-h-[200px] p-5 rounded-lg !bg-red-800 !shadow-2xl !border-red-500  ">
-          <div className="grid grid-cols-[1fr_3fr] gap-5">
-            <div className="flex flex-col gap-2">
-              <Typography.Text className="text-[11px] md:text-base">
-                <MailOutlined size={300} className='!text-blue-500' />
-              </Typography.Text>
-              <Typography.Text className="text-[11px] md:text-base">
-                <PhoneOutlined className='!text-blue-500'/>
-              </Typography.Text>
-              <Typography.Text className="text-[11px] md:text-base">
-                <EnvironmentOutlined className='!text-blue-500'/>
-              </Typography.Text>
-            </div>
-            <div className="flex flex-col gap-2">
-              <Typography.Text className="text-[11px] md:text-base !text-white">
-                Colauncha@gmail.com
-              </Typography.Text>
-              <Typography.Text className="text-[11px] md:text-base !text-white">
-                +234 98356672867
-              </Typography.Text>
-              <Typography.Text className="text-[11px] md:text-base !text-white">
-                Lagos, Nigeria
-              </Typography.Text>
-            </div>
-          </div>
         </Card>
       </div>
     </div>

@@ -9,7 +9,7 @@ import { Typography } from 'antd';
 
 const Footer = () => {
   return (
-    <div className="mt-20 h-[200px] bg-[#F60000] py-10 px-5 md:px-20 relative">
+    <div className="mt-20 h-[200px] bg-[#C4C4C426] py-10 px-5 md:px-20 relative">
       <div className="grid md:grid-cols-[3fr_1fr]">
         <div className="flex flex-col justify-center items-center md:items-start gap-2 mb-5">
           <Typography.Title className="!text-2xl !text-center md:!text-3xl md:!text-left  text-[#000000]">
