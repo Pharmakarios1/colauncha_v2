@@ -16,7 +16,7 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ onClose, open }) => {
         open={open}
         placement="top"
         height={1000}
-        className="!bg-blue-900 text-white !p-0 !shadow-lg"
+        className="!bg-[#3783FF] text-white !p-0 !shadow-lg"
       >
         <div className="w-[350px] pt-12 mx-auto md:w-0 md:mx-0">
           <DeskTopNav />

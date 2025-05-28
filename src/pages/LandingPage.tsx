@@ -3,6 +3,7 @@ import Footer from '@components/Footer';
 import Hero from '@components/Hero';
 import HowItWorks from '@components/HowItWorks';
 import MVP from '@components/MVP';
+import ScrollToTopButton from '@components/ScrollToTop';
 import StackScrollLeft from '@components/StackScroll';
 import TalentCallToAction from '@components/TalentCallToAction';
 import Testimonial from '@components/Testimonial';
@@ -19,6 +20,7 @@ const LandingPage = () => {
       <Testimonial />
       <Contact />
       <Footer />
+      <ScrollToTopButton />
     </motion.div>
   );
 };
