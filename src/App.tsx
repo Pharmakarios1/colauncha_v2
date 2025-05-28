@@ -18,6 +18,7 @@ import UploadProposal from '@components/DashboardData/_partials/Proposals';
 import Logout from '@components/DashboardData/_partials/Logout';
 import Error404 from '@components/ErrorHandler/Error404';
 
+
 const queryClient = new QueryClient();
 
 const App = () => {
@@ -38,7 +39,8 @@ const App = () => {
         colorText: primaryColor
       },
       Card: {
-        colorBgContainer: '#F7F5BC7D',
+        colorBgContainer: '#3783FF1A',
+        colorBorder: primaryColor,
         colorText: primaryColor,
         colorTextHeading: primaryColor
       },

@@ -31,9 +31,9 @@ const HowItWorksTexts = () => {
       <Divider
         className=" !text-3xl text-blue-900 font-bold  md:!text-4xl"
         variant="solid"
-        style={{ borderColor: 'blue' }}
+        style={{ borderColor: '#3783FF' }}
       >
-        How It <span className="text-blue-900">Works</span>
+        How It <span className="text-[#3783FF]">Works</span>
       </Divider>
 
       <Card>
@@ -49,10 +49,11 @@ const HowItWorksTexts = () => {
         variants={animationStates}
         whileHover={{
           scale: 1.05,
-          color: 'blue',
+          fontWeight: 'bold',
+          color: '#3783FF',
           transition: { type: 'spring', stiffness: 300 }
         }}
-        className="text-left text-sm mb-2 "
+        className="text-left text-[12px] my-5"
       >
         Our streamlined process ensures that your MVP is not only developed
         efficiently but also tailored to your unique vision. From ideation to
@@ -63,18 +64,19 @@ const HowItWorksTexts = () => {
       <motion.p
         variants={animationStates}
         whileHover={{
-          scale: 1.01,
-          color: 'blue',
+          scale: 1.05,
+          fontWeight: 'bold',
+          color: '#3783FF',
           transition: { type: 'spring', stiffness: 300 }
         }}
-        className="text-left text-sm"
+        className="text-left text-[12px] "
       >
         We understand that every project is unique, and we take the time to
         understand your specific needs and goals. Our team of experts will work
         closely with you to ensure that your MVP is not only functional but also
         user-friendly and visually appealing.
       </motion.p>
-      <p className="mt-5">Book your talents to get started.</p>
+      <p className="my-5 text-[12px]">Book your talents to get started.</p>
 
       <Button
         onClick={handleNavigationClick}

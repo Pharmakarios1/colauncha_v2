@@ -46,12 +46,12 @@ const MVP = () => {
             <img src={item.image} alt="mvp_img" />
             <div className="flex justify-between items-center">
               {' '}
-              <h3 className="font-bold my-3">{item.title}</h3>{' '}
+              <h3 className="font-bold my-3 text-blue-600">{item.title}</h3>{' '}
               <span className="text-blue-600 hover:underline">
                 <LinkOutlined />
               </span>
             </div>
-            <p className="text-sm">{item.description}</p>
+            <p className="text-[12px]">{item.description}</p>
           </a>
         ))}
       </div>

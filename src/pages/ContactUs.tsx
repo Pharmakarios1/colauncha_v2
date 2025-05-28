@@ -3,9 +3,9 @@ import TextArea from 'antd/es/input/TextArea';
 
 const ContactUs = () => {
   return (
-    <div className="w-[90%] md:w-[50%]  mx-auto mt-10 mb-20">
+    <div className="w-[90%] lg:w-[50%]  mx-auto mt-10 mb-20">
       <div>
-        <Card className='!bg-[#bcd3f77d] !border-0 !shadow-none'>
+        <Card className='!bg-[#bcd3f77d]'>
           <div className="flex justify-center items-center gap-2 md:gap-10 text-nowrap">
             <img src="/gif/call.gif" alt="" className="w-14 h-20" />
             <div>

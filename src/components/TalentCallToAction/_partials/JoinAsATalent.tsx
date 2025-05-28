@@ -8,8 +8,8 @@ const JoinAsATalent = () => {
   const handleNavigationClick = () => {
     navigate('/dashboard');
   };
-  const animationStates = {
-    hidden: { opacity: 0, y: -50 },
+    const animationStates = {
+    hidden: { opacity: 0, y: 100 },
     show: { opacity: 1, y: 0 }
   };
 
@@ -36,7 +36,7 @@ const JoinAsATalent = () => {
       <p className="!text-black text-xl md:text-3xl text-center md:text-left">
         Fuel Innovation. Build Tomorrow's MVPs.
       </p>
-      <p className="text-black text-xl mt-4 text-center md:text-left">
+      <p className="text-black text-md mt-4 text-center md:text-left">
         {' '}
         Join us and be part of a community that values your skills and
         creativity. Our network of tech teams undergoes a rigorous screening and
