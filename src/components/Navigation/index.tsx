@@ -1,7 +1,7 @@
 //third party
 import { MenuOutlined } from '@ant-design/icons';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { motion } from 'motion/react';
 //local imports
 import DeskTopNav from './_partials/DeskTopNav';
@@ -11,6 +11,9 @@ const Navigation = () => {
   const [open, setOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const isRootPath = location.pathname === '/';
+
   // Function to show the drawer
   const showDrawer = () => {
     setOpen(true);
@@ -31,7 +34,7 @@ const Navigation = () => {
     onClose();
   };
   return (
-    <div className="w-full backdrop-blur-2xl h-18 sticky top-0 z-20 shadow-lg flex items-center justify-between px-4">
+    <div className={`${isRootPath? "fixed":"sticky" } w-full backdrop-blur-2xl h-18  top-0 z-20 shadow-lg flex items-center justify-between px-4`}>
       <Link to="/">
         <img
           src="/png/logo.png"

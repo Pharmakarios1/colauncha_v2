@@ -2,6 +2,7 @@ import { Button } from 'antd';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import Navigation from '@components/Navigation';
 
 // Array of background images
 const backgroundImages = [
@@ -59,7 +60,7 @@ const animateBtn = {
   inView: {
     y: [0, -10, 0],
     transition: {
-      duration: 1,
+      duration: 4,
       repeat: Infinity,
       delay: 2.8,
       ease: 'easeOut'
@@ -77,6 +78,8 @@ const Hero = () => {
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [nextImageIndex, setNextImageIndex] = useState(1);
+
+  
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -99,6 +102,7 @@ const Hero = () => {
 
   return (
     <div className="relative h-[73vh] md:h-screen overflow-hidden ">
+    
       {/* Current Background */}
       <motion.div
         key={`current-${currentImageIndex}`}
@@ -135,7 +139,7 @@ const Hero = () => {
       </AnimatePresence>
 
       {/* Content */}
-      <div className="relative z-20 flex h-full items-center justify-center text-center text-white">
+      <div className="relative z-10 flex h-full items-center justify-center text-center text-white">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
