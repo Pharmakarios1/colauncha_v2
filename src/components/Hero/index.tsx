@@ -101,7 +101,7 @@ const Hero = () => {
   }, [nextImageIndex]);
 
   return (
-    <div className="relative h-[73vh] md:h-screen overflow-hidden ">
+    <div className="relative h-[85vh] md:h-screen overflow-hidden ">
     
       {/* Current Background */}
       <motion.div
