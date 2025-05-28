@@ -2,7 +2,7 @@ import { Button } from 'antd';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import Navigation from '@components/Navigation';
+
 
 // Array of background images
 const backgroundImages = [
