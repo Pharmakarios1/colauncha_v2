@@ -12,7 +12,7 @@ const mvpData = [
   {
     image: '/png/fixServe.png',
     title: 'FixServ',
-    path: 'http://www.fixServ.com',
+    path: 'https://lovable.dev/projects/bfc03a53-18f6-47a1-96cf-9981d4217e24',
     description:
       'FixServ is a digital marketplace that connects users with professional artisans specializing in gadget repairs and services.'
   },
@@ -46,7 +46,9 @@ const MVP = () => {
             <img src={item.image} alt="mvp_img" />
             <div className="flex justify-between items-center">
               {' '}
-              <h3 className="font-bold my-3 text-blue-600">{item.title}</h3>{' '}
+              <h3 className="font-bold my-3 text-blue-600">
+                {item.title}
+              </h3>{' '}
               <span className="text-blue-600 hover:underline">
                 <LinkOutlined />
               </span>

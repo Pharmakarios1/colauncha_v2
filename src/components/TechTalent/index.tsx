@@ -38,7 +38,7 @@ const TechTalent = () => {
  
   return (
     <div className="w-full lg:w-[85%] mx-auto ">
-      <div className="text-xl lg:text-2xl">Tech Talents</div>
+      <div className="text-xl lg:text-2xl pl-6">Tech Talents</div>
       <div
         
         className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-6"
