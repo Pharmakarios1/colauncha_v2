@@ -19,10 +19,11 @@ import Logout from '@components/DashboardData/_partials/Logout';
 import Error404 from '@components/ErrorHandler/Error404';
 import MobileNav from '@components/Navigation/_partials/MobileNav';
 import { useState } from 'react';
-const [showMenu, setShowMenu] = useState(false);
+
 const queryClient = new QueryClient();
 
 const App = () => {
+  const [showMenu, setShowMenu] = useState(false);
   const primaryColor = '#3783FF';
 
   const antTheme = {
