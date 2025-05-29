@@ -1,4 +1,3 @@
-
 const techTalentData = [
   {
     id: 1,
@@ -35,18 +34,14 @@ const techTalentData = [
 ];
 
 const TechTalent = () => {
- 
   return (
     <div className="w-full lg:w-[85%] mx-auto ">
-      <div className="text-xl lg:text-2xl pl-6">Tech Talents</div>
-      <div
-        
-        className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-6"
-      >
+      <div className="text-xl lg:text-2xl pl-1">Tech Talents</div>
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-6">
         {techTalentData.map((talent, idx) => (
           <div
             key={talent.id}
-            className={`relative w-full lg:w-[100%] h-[300px] p-4 ${idx % 2 === 1 ? 'bg-[#3783FF]' : 'bg-red-500'} rounded-lg shadow-md hover:scale-102 transition-transform duration-300 ease-in-out`}
+            className={`relative w-full lg:w-[100%] h-[250px] p-4 ${idx % 2 === 1 ? 'bg-[#3783FF]' : 'bg-red-500'} rounded-lg shadow-md hover:scale-102 transition-transform duration-300 ease-in-out`}
             style={{
               backgroundImage: `url(${talent.image})`,
               backgroundSize: 'cover',
