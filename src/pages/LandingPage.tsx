@@ -1,4 +1,3 @@
-import Contact from '@components/Contact';
 import Hero from '@components/Hero';
 import HowItWorks from '@components/HowItWorks';
 import MVP from '@components/MVP';
@@ -20,7 +19,6 @@ const LandingPage = () => {
       <TalentCallToAction />
       <MVP />
       <Testimonial />
-      <Contact />
       <ScrollToTopButton />
     </motion.div>
   );
