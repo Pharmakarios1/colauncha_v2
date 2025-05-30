@@ -2,19 +2,19 @@ import { Card } from 'antd';
 import { AnimatePresence } from 'motion/react';
 import { motion } from 'framer-motion';
 
-const containerVariants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.9
-    }
-  }
-};
+// const containerVariants = {
+//   hidden: {},
+//   show: {
+//     transition: {
+//       staggerChildren: 0.9
+//     }
+//   }
+// };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 }
-};
+// const itemVariants = {
+//   hidden: { opacity: 0, y: 20 },
+//   show: { opacity: 1, y: 0 }
+// };
 
 const AboutUs = () => {
   return (
@@ -55,7 +55,7 @@ const AboutUs = () => {
         <div className='my-10 flex items-center justify-between'>
          <img src="/png/angle1.png" alt="" className='w-6 h-6' /> <p className='text-[26px] text-black'>We make sure your idea & creation is delivered properly</p> <img src="/png/angle2.png" alt=""className='w-6 h-6' /> 
         </div>
-        
+
         {/* <motion.div
           className="flex flex-col  mx-auto w-[70%] mt-6 md:my-14"
           variants={containerVariants}
