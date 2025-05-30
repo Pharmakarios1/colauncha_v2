@@ -18,12 +18,12 @@ import UploadProposal from '@components/DashboardData/_partials/Proposals';
 import Logout from '@components/DashboardData/_partials/Logout';
 import Error404 from '@components/ErrorHandler/Error404';
 import MobileNav from '@components/Navigation/_partials/MobileNav';
-import { useState } from 'react';
+
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [showMenu, setShowMenu] = useState(false);
+  
   const primaryColor = '#3783FF';
 
   const antTheme = {
@@ -57,7 +57,7 @@ const App = () => {
     <ConfigProvider theme={{ ...antTheme }}>
       <Router>
         <QueryClientProvider client={queryClient}>
-          <Navigation showMenu={showMenu} setShowMenu={setShowMenu} />
+          <Navigation  />
           <MobileNav />
           <Routes>
             <Route path="/" element={<LandingPage />} />

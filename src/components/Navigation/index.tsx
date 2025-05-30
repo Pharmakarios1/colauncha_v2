@@ -1,17 +1,11 @@
 //third party
-import { CloseOutlined, MenuOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+
 import { Link, useLocation, useNavigate } from 'react-router';
 import { motion } from 'motion/react';
-import { Dispatch, SetStateAction } from 'react';
-//local imports
+
 import DeskTopNav from './_partials/DeskTopNav';
 
-type NavigationProps = {
-  showMenu: boolean;
-  setShowMenu: Dispatch<SetStateAction<boolean>>;
-};
-const Navigation = ({ showMenu, setShowMenu }: NavigationProps) => {
+const Navigation = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const isRootPath = location.pathname === '/';
@@ -43,16 +37,10 @@ const Navigation = ({ showMenu, setShowMenu }: NavigationProps) => {
           whileTap={{ scale: 0.9 }}
           transition={{ type: 'spring', stiffness: 300 }}
           onClick={handleTalentRequest}
-          className="hidden cursor-pointer md:flex bg-blue-500 text-white text-sm text-nowrap px-4 py-2 rounded-4xl hover:bg-blue-600 transition duration-300"
+          className=" cursor-pointer md:flex bg-blue-500 text-white text-sm text-nowrap px-4 py-2 rounded-4xl hover:bg-blue-600 transition duration-300"
         >
           Get Started
         </motion.button>
-        <div className="md:hidden">
-          <Button
-            icon={showMenu ? <CloseOutlined /> : <MenuOutlined />}
-            onClick={() => setShowMenu(!showMenu)}
-          ></Button>
-        </div>
       </div>
     </div>
   );
