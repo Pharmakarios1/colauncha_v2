@@ -10,7 +10,7 @@ const Testimonial = () => {
             What our Clients says
           </h1></div>
       
-      <div className="absolute inset-0 top-[75%] md:top-[42%] transform -translate-y-1/5 p-5 md:py-50">
+      <div className="absolute inset-0 top-[80%] md:top-[50%] transform -translate-y-1/5 p-5 md:py-50">
         <MultiCardCarousel />
       </div>
     </div>

@@ -12,6 +12,7 @@ const HowItWorksTexts = () => {
     hidden: { opacity: 0, y: -50 },
     visible: { opacity: 1, y: 0 }
   };
+  
 
   const { ref, inView } = useInView({
     triggerOnce: false,

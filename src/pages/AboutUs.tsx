@@ -20,19 +20,19 @@ const AboutUs = () => {
   return (
     <Card className="grid sm:grid-cols-1 !bg-slate-100 ">
       <div className="flex flex-col items-center  min-h-screen bg-gray-100">
-        <h1 className="text-4xl font-bold mb-4">About Us</h1>
+        <h1 className="text-4xl text-black font-bold mb-4">About Us</h1>
         <p className="text-lg text-center my-3 max-w-2xl">
           We empower startups with the right talents
         </p>
         <AnimatePresence>
-          <div className="hidden md:grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center justify-center gap-2 mt-2">
+          <div className="hidden md:grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center justify-center gap-10 mt-2">
             <motion.img
               animate={{ x: [-100, 0], opacity: [0, 1] }}
               whileHover={{ scale: [1, 1.1, 1], opacity: [0, 1] }}
               transition={{ duration: 0.9 }}
               src="/png/about1.png"
               alt=""
-              className="w-70 h-70 rounded-lg"
+              className="w-60 h-60 rounded-lg"
             />
             <motion.img
               animate={{ y: [-100, 0], opacity: [0, 1] }}
@@ -40,7 +40,7 @@ const AboutUs = () => {
               transition={{ duration: 0.9 }}
               src="/png/about2.png"
               alt=""
-              className="w-70 h-70 rounded-lg"
+              className="w-60 h-60 rounded-lg"
             />
             <motion.img
               animate={{ x: [100, 0], opacity: [0, 1] }}
@@ -48,11 +48,15 @@ const AboutUs = () => {
               transition={{ duration: 0.9 }}
               src="/png/about3.png"
               alt=""
-              className="w-70 h-70 rounded-lg"
+              className="w-60 h-60 rounded-lg"
             />
           </div>
         </AnimatePresence>
-        <motion.div
+        <div className='my-10 flex items-center justify-between'>
+         <img src="/png/angle1.png" alt="" className='w-6 h-6' /> <p className='text-[26px] text-black'>We make sure your idea & creation is delivered properly</p> <img src="/png/angle2.png" alt=""className='w-6 h-6' /> 
+        </div>
+        
+        {/* <motion.div
           className="flex flex-col  mx-auto w-[70%] mt-6 md:my-14"
           variants={containerVariants}
           initial="hidden"
@@ -115,7 +119,7 @@ const AboutUs = () => {
               </li>
             </ul>
           </motion.div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </Card>
   );

@@ -8,11 +8,41 @@ const JoinAsATalent = () => {
   const handleNavigationClick = () => {
     navigate('/dashboard');
   };
-    const animationStates = {
+  const animationStates = {
     hidden: { opacity: 0, y: 100 },
     show: { opacity: 1, y: 0 }
   };
-
+  const arrowAnimationStates = {
+    initial: {
+      opacity: 0,
+      x: -200
+    },
+    animate: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1.5,
+        delay: 1,
+        ease: 'easeOut'
+      }
+    },
+    hover: {
+      scale: 1.1,
+      transition: {
+        duration: 0.4,
+        ease: 'easeOut'
+      }
+    },
+    View: {
+      x: [0, -10, 0],
+      transition: {
+        duration: 1.5,
+        repeat: Infinity,
+        delay: 1,
+        ease: 'easeOut'
+      }
+    }
+  };
   const { ref, inView } = useInView({
     triggerOnce: false,
     threshold: 0.2
@@ -42,15 +72,28 @@ const JoinAsATalent = () => {
         creativity. Our network of tech teams undergoes a rigorous screening and
         are matched based on the needs of each project
       </p>
-     
-      <Button
-        onClick={handleNavigationClick}
-        type="text"
-        size="large"
-        className="!w-[80%] md:!w-[200px] mx-auto md:mx-0 !text-white !bg-[#F60000]"
-      >
-        Join as a Talent
-      </Button>
+
+      <div className="relative">
+        <Button
+          onClick={handleNavigationClick}
+          type="text"
+          size="large"
+          className="!w-[90%] md:!w-[150px] mx-auto md:mx-0 !text-white !bg-[#F68600C2]"
+        >
+          Apply Now
+        </Button>
+        <motion.div
+          initial="hidden"
+          animate={inView ? 'show' : 'hidden'}
+          variants={arrowAnimationStates}
+          whileInView={'View'}
+          exit={'outOfView'}
+          transition={{ duration: 0.9 }}
+          className="hidden lg:block absolute right-40 top-1/2 transform -translate-y-1/2 translate-x-10"
+        >
+          <img src="/png/arrow3.png" alt="" />
+        </motion.div>
+      </div>
     </motion.div>
   );
 };

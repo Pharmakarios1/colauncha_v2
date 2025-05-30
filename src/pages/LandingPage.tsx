@@ -18,8 +18,8 @@ const LandingPage = () => {
       <StackScrollLeft />
       <HowItWorks />
       <TechTalent />
-      <MVP />
       <TalentCallToAction />
+      <MVP />
       <Testimonial />
       <Contact />
       <Footer />

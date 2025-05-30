@@ -4,7 +4,7 @@ import 'react-multi-carousel/lib/styles.css';
 
 interface TestimonialCardProps {
   name: string;
-  position: string;
+  imgurl?: string;
   testimonial: string;
 }
 const responsive = {
@@ -24,40 +24,38 @@ const responsive = {
 const testimonialData = [
   {
     id: 1,
-    name: 'John Doe',
-    position: 'CEO, Company A',
+    name: 'Charles Davies',
+    imgurl: '/png/charles.png',
     testimonial:
-      'This is a great service! It has helped us improve our workflow significantly.'
+      'Colauncha helped us bring our vision to life without upfront costs, while our team gained valuable experience'
   },
   {
     id: 2,
-    name: 'Jane Smith',
-    position: 'CTO, Company B',
-    testimonial:
-      'I highly recommend this service. The team is very professional and responsive.'
+    name: 'Frank Cole',
+    imgurl: '/png/frank.png',
+    testimonial: 'Colauncha helped me to achieve a lot with their tech team '
   },
   {
     id: 3,
-    name: 'Alice Johnson',
-    position: 'COO, Company C',
+    name: 'Jumoke Bello',
+    imgurl: '/png/jumoke.png',
     testimonial:
-      'A game changer for our business. We have seen a significant increase in productivity.'
+      'Working with Colauncha provided real-world experience I needed to advance my career'
   }
 ];
 const Card: React.FC<TestimonialCardProps> = ({
   name,
-  position,
+  imgurl,
   testimonial
 }) => (
-  <div className="flex flex-col max-h-[250px] bg-[#F600005E] p-6 rounded-lg shadow mx-2">
+  <div className="flex flex-col h-[220px] bg-[#F600005E] p-6 rounded-lg shadow mx-2">
     <div className="flex items-center mb-4 gap-5">
-      <img src="/png/mvp.png" alt="" className="w-12 h-12 rounded-full" />
+      <img src={imgurl} alt="" className="w-12 h-12 rounded-full" />
       <div className="flex flex-col">
         <h2 className="text-base font-bold">{name}</h2>
-        <p className="text-[10px] text-white">{position}</p>
       </div>
     </div>
-    <p className="text-sm text-gray-800">{testimonial}</p>
+    <p className="text-base mt-4 text-gray-800">{testimonial}</p>
   </div>
 );
 
@@ -69,12 +67,7 @@ const MultiCardCarousel = () => (
     infinite={true}
   >
     {testimonialData.map((item) => (
-      <Card
-        key={item.id}
-        name={item.name}
-        position={item.position}
-        testimonial={item.testimonial}
-      />
+      <Card key={item.id} name={item.name} testimonial={item.testimonial} imgurl={item.imgurl} />
     ))}
   </Carousel>
 );

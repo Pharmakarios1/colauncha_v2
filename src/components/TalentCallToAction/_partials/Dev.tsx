@@ -21,7 +21,7 @@ const Dev = () => {
       variants={animationStates}
       transition={{ duration: 0.9 }}className="flex flex-col gap-10 p-6 md:p-0 md:mt-20 ">
      <img
-        src="/png/talent.png"
+        src="/png/talentImg.png"
         alt="Developer"
         className="w-full h-[450px] rounded-md"
       />

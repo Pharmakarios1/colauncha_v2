@@ -1,3 +1,5 @@
+import { Button } from 'antd';
+import { motion } from 'framer-motion';
 const techTalentData = [
   {
     id: 1,
@@ -32,10 +34,40 @@ const techTalentData = [
       'A creative designer focused on enhancing user experience through intuitive interfaces.'
   }
 ];
-
+const arrowAnimationStates = {
+  initial: {
+    opacity: 0,
+    x: -200
+  },
+  animate: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 1.5,
+      delay: 1,
+      ease: 'easeOut'
+    }
+  },
+  hover: {
+    scale: 1.1,
+    transition: {
+      duration: 0.4,
+      ease: 'easeOut'
+    }
+  },
+  View: {
+    x: [0, -10, 0],
+    transition: {
+      duration: 1.5,
+      repeat: Infinity,
+      delay: 1,
+      ease: 'easeOut'
+    }
+  }
+};
 const TechTalent = () => {
   return (
-    <div className="w-full lg:w-[85%] mx-auto ">
+    <div className="w-full lg:w-[85%] mx-auto md:h-[80vh] ">
       <div className="text-xl lg:text-2xl pl-1">Tech Talents</div>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-6">
         {techTalentData.map((talent, idx) => (
@@ -54,6 +86,23 @@ const TechTalent = () => {
             </p>
           </div>
         ))}
+      </div>
+      <div className="relative flex justify-end pr-6 w-full h-[250px]">
+        <Button type="primary" className=" h-[250px]  ">
+          View All Talents
+        </Button>
+        <motion.div
+          initial="initial"
+          animate="animate"
+          whileHover="hover"
+          whileInView="View"
+          variants={arrowAnimationStates}
+          onHoverStart={() => {}}
+          onHoverEnd={() => {}}
+          className="absolute right-44 -top-4"
+        >
+          <img src="/png/arrow2.png" alt="" />
+        </motion.div>
       </div>
     </div>
   );
