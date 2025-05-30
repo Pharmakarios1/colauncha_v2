@@ -16,17 +16,7 @@ interface TeamProps {
 }
 
 const defaultMembers: TeamMemberProps[] = [
-  {
-    teamImg: '/jpg/Sola.jpg',
-    name: 'Sola Akano',
-    position: 'CEO & Founder',
-    description:
-      'Mr. Sola Akano is a visionary leader with over 10 years of experience in the tech & energy industry. He has a passion for innovation and a commitment to excellence.',
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/akano-oluwasola',
-      twitter: 'https://twitter.com/johndoe'
-    }
-  },
+ 
   {
     teamImg: '/jpg/Akintola.jpg',
     name: 'Akintola Oluwaseun',
@@ -39,7 +29,7 @@ const defaultMembers: TeamMemberProps[] = [
     }
   },
   {
-    teamImg: '/jpg/Iyanu.jpg',
+    teamImg: '/png/Iyanu2.png',
     name: 'Iyanu Ajimobi',
     position: 'Backend Develope/Technical Lead',
     description:
@@ -50,7 +40,7 @@ const defaultMembers: TeamMemberProps[] = [
     }
   },
   {
-    teamImg: '/jpg/david.jpg',
+    teamImg: '/png/david2.png',
     name: 'David Adesope',
     position: 'Product Designer',
     description:
@@ -63,16 +53,16 @@ const defaultMembers: TeamMemberProps[] = [
   {
     teamImg: '/jpg/blessed.jpg',
     name: 'Blessed Akhigbe',
-    position: 'Frontend Developer Lead',
+    position: 'Frontend Development Lead',
     description:
-      'Ms. Blessed Akhigbe is a dedicated frontend developer with a keen eye for detail. Her work in creating responsive and accessible web applications has been invaluable to our team.',
+      'Mr. Blessed Akhigbe is a dedicated frontend developer with a keen eye for detail. His work in creating responsive and accessible web applications has been invaluable to our team.',
     socialLinks: {
       linkedin: 'https://www.linkedin.com/in/akano-oluwasola',
       twitter: 'https://twitter.com/johndoe'
     }
   },
   {
-    teamImg: '/jpg/uthman.jpg',
+    teamImg: '/png/uthman2.png',
     name: 'Adebari Uthman Titilope',
     position: 'Frontend Developer',
     description:
@@ -83,11 +73,22 @@ const defaultMembers: TeamMemberProps[] = [
     }
   },
   {
-    teamImg: '/jpg/ify.jpg',
+    teamImg: '/png/ify2.png',
     name: 'Ifunanya Ugwoke',
     position: 'Frontend Developer',
     description:
       'Ms. Ifunanya Ugwoke is a talented frontend developer known for her attention to detail and commitment to delivering high-quality code. Her work has significantly enhanced the performance of our web applications.',
+    socialLinks: {
+      linkedin: 'https://www.linkedin.com/in/akano-oluwasola',
+      twitter: 'https://twitter.com/johndoe'
+    }
+  },
+  {
+    teamImg: '/jpg/isabella.jpg',
+    name: 'Isabella',
+    position: 'Digital Marketer',
+    description:
+      'Ms. Isabella is a dynamic digital marketer with a knack for creating effective online campaigns. Her strategies have helped us reach a wider audience and increase our brand visibility.',
     socialLinks: {
       linkedin: 'https://www.linkedin.com/in/akano-oluwasola',
       twitter: 'https://twitter.com/johndoe'
@@ -98,7 +99,7 @@ const defaultMembers: TeamMemberProps[] = [
 const Team: React.FC<TeamProps> = ({ members = defaultMembers }) => {
   return (
     <div>
-      <div className=" w-full md:w-[95%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 place-items-center my-10">
+      <div className=" w-full md:w-[95%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center my-10">
         {members.map((member, index) => (
           <CustomCard
             key={index}

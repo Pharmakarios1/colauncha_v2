@@ -63,12 +63,17 @@ const Dashboard = () => {
     <Layout style={{ minHeight: '100vh' }}>
       <Layout.Header>
         <p className="text-sm text-center md:text-left md:text-2xl py-5 text-nowrap">
-          Colauncha Dashboard
+          welcome to the Dashboard
         </p>
       </Layout.Header>
       <Layout>
         <Sider
-          style={{ paddingTop: '100px' }}
+          style={{
+            paddingTop: '100px',
+            position: 'fixed',
+            height: '100vh',
+            zIndex: 100
+          }}
           onCollapse={handleSiderCollapse}
           collapsible
           collapsed={!collapsed}
@@ -103,9 +108,6 @@ const Dashboard = () => {
           </Layout.Content>
         </Layout>
       </Layout>
-      <Layout.Footer style={{ textAlign: 'center' }}>
-        ©{new Date().getFullYear()} Created by Colauncha
-      </Layout.Footer>
     </Layout>
   );
 };

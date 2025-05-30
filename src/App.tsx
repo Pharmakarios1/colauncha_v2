@@ -19,12 +19,11 @@ import Logout from '@components/DashboardData/_partials/Logout';
 import Error404 from '@components/ErrorHandler/Error404';
 import MobileNav from '@components/Navigation/_partials/MobileNav';
 import Footer from '@components/Footer';
-
+import Contact from '@components/Contact';
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  
   const primaryColor = '#3783FF';
 
   const antTheme = {
@@ -58,7 +57,7 @@ const App = () => {
     <ConfigProvider theme={{ ...antTheme }}>
       <Router>
         <QueryClientProvider client={queryClient}>
-          <Navigation  />
+          <Navigation />
           <MobileNav />
           <Routes>
             <Route path="/" element={<LandingPage />} />
@@ -74,6 +73,7 @@ const App = () => {
               <Route path="logout" element={<Logout />} />
             </Route>
           </Routes>
+          <Contact />
           <Footer />
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>

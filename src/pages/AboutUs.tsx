@@ -1,7 +1,6 @@
 import { Card } from 'antd';
 import { AnimatePresence } from 'motion/react';
 import { motion } from 'framer-motion';
-import Contact from '@components/Contact';
 
 const AboutUs = () => {
   return (
@@ -154,9 +153,6 @@ const AboutUs = () => {
         </motion.div> */}
         </div>
       </Card>
-      <div className=" mb-10">
-        <Contact />
-      </div>
     </>
   );
 };
