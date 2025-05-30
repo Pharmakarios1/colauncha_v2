@@ -18,6 +18,7 @@ import UploadProposal from '@components/DashboardData/_partials/Proposals';
 import Logout from '@components/DashboardData/_partials/Logout';
 import Error404 from '@components/ErrorHandler/Error404';
 import MobileNav from '@components/Navigation/_partials/MobileNav';
+import Footer from '@components/Footer';
 
 
 const queryClient = new QueryClient();
@@ -73,6 +74,7 @@ const App = () => {
               <Route path="logout" element={<Logout />} />
             </Route>
           </Routes>
+          <Footer />
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </Router>
