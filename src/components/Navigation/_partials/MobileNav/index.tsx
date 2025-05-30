@@ -1,7 +1,7 @@
 import { AiOutlineTeam } from 'react-icons/ai';
 import { CiHome } from 'react-icons/ci';
 import { IoIosPhonePortrait } from 'react-icons/io';
-import { FcAbout } from 'react-icons/fc';
+import { ImNotification } from 'react-icons/im';
 
 import { useState } from 'react';
 import { Button } from 'antd';
@@ -99,7 +99,7 @@ const MobileNav = () => {
               href="/about"
               onClick={() => setShowMenu((prev) => !prev)}
             >
-              <FcAbout />
+              <ImNotification />
               ABOUT
             </a>
             <a
