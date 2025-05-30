@@ -9,7 +9,7 @@ const CustomCard: React.FC<TeamMemberProps> = ({teamImg ,...props}) => {
     <div>
         <div className="flex   md:flex-col md:items-center  w-full max-w-sm md:max-w-[300px] bg-white rounded-lg shadow-md ">
             <img src={teamImg} alt="Team Member" className="w-[100%] h-52 rounded-md" />
-            <div className="flex flex-col md:items-center gap-2 ml-4">
+            <div className="flex flex-col md:items-center gap-2 p-2">
                 <h2 className="font-bold text-sm">{props.name}</h2>
             <p className="text-[12px] font-semibold">{props.position}</p>
             <p className="text-[12px] ">{props.description}</p>
