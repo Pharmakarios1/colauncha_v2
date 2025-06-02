@@ -23,14 +23,14 @@ import Logout from '@components/DashboardData/_partials/Logout';
 const baseurl = '/dashboard/';
 export const items = [
   {
-    label: 'Team Request',
+    label: 'Team',
     key: '1',
     icon: <TeamOutlined />,
     comp: <ProjectRequest />,
     path: `${baseurl}project-request`
   },
   {
-    label: 'Talent Request',
+    label: 'Talent',
     key: '2',
     icon: <UserOutlined />,
     comp: <TalentRequest />,
@@ -38,7 +38,7 @@ export const items = [
   },
 
   {
-    label: 'Upload Proposal',
+    label: 'Proposal',
     key: '3',
     icon: <UploadOutlined />,
     comp: <UploadProposal />,
