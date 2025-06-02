@@ -37,9 +37,9 @@ const AboutUs = () => {
           </AnimatePresence>
           <div className="my-5 flex items-center justify-between">
             <img src="/png/angle1.png" alt="" className="w-6 h-6" />{' '}
-            <p className="text-[12px] sm:text-sm lg:text-[24px] text-black">
-              We make sure your idea & creation is delivered properly
-            </p>{' '}
+            <p className="text-[12px] sm:text-sm lg:text-[28px] text-black">
+              We make sure your <span className='text-green-500'>idea</span> & creation is <span className='text-amber-200'>delivered</span> properly
+            </p>
             <img src="/png/angle2.png" alt="" className="w-6 h-6" />
           </div>
           <div className="w-full mt-2 md:mt-10  ">
@@ -53,10 +53,10 @@ const AboutUs = () => {
                 className=" w-[60%] h-full md:w-72 md:h-60 rounded-lg"
               />
               <div className="w-[400px] mt-4">
-                <h3 className="text-2xl text-blue-500 w-[80%]">
+                <h3 className="text-lg md:text-2xl text-blue-500 w-[80%]">
                   We empower startups with the right talents
                 </h3>
-                <p className="text-base md:w-72 text-black mt-4 md:leading-6">
+                <p className="text-[12px] md:w-72 text-black mt-4 md:leading-6">
                   We build a sustainable bridge between talented tech
                   professionals and the startups that need them, empowering both
                   sides to grow and succeed{' '}
@@ -73,8 +73,8 @@ const AboutUs = () => {
                 className=" w-full h-full md:w-72 md:h-60 rounded-lg md:order-2"
               />
               <div className="w-[400px] mt-4">
-                <h3 className="text-2xl text-red-500">Our aim and goal</h3>
-                <p className="text-base md:w-72 text-black mt-4 md:leading-6">
+                <h3 className="text-lg md:text-2xl text-red-500">Our aim and goal</h3>
+                <p className="text-[12px]  md:w-72 text-black mt-4 md:leading-6">
                   To become the leading talent marketplace for tech startups,
                   fostering innovation and growth through affordable,
                   sustainable talent solutions
