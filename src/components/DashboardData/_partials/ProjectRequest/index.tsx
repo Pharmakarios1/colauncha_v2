@@ -1,15 +1,18 @@
-//api calls
+// API calls
 import { useMutation } from '@tanstack/react-query';
-import submitProjectRequest from 'api/ProjectApi';
-//third party
-import { Button, Form, Input } from 'antd';
-import { UploadProps } from 'antd';
+import axios, { AxiosError } from 'axios';
+// Third party
+import { Button, Form, Input, Upload } from 'antd';
+import type { UploadFile, UploadProps } from 'antd';
 import PhoneInput from 'antd-phone-input';
 import { InboxOutlined } from '@ant-design/icons';
-import { message, Upload } from 'antd';
+import { message } from 'antd';
 import { useState } from 'react';
 
- export interface ProjectRequestFormData {
+// Define API base URL
+const API_BASE_URL = 'https://api-colauncha.vercel.app/api';
+
+export interface ProjectRequestFormData {
   name: string;
   email: string;
   phone: string;
@@ -22,107 +25,97 @@ import { useState } from 'react';
   uploadedFiles?: string[];
 }
 
-interface FormValues {
+interface ProjectFormValues {
   name: string;
   email: string;
   phone: string;
-  'project-name': string;
-  'estimated-budget': string;
-  'project-duration': string;
-  'company-name': string;
-  'required-technologies': string;
-  'project-description': string;
+  project_name: string;
+  estimated_budget: string;
+  max_project_time: string;
+  company_name: string;
+  required_technologies: string;
+  project_description: string;
 }
 
-// uploadedFiles will hold the file metadata
-type UploadedFile = {
-  uid: string;
-  name: string;
-  size: number;
-  type: string;
-} & File;
-
 const ProjectRequest = () => {
-  const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
+   const { Dragger } = Upload;
   const [form] = Form.useForm();
-  const { Dragger } = Upload;
+  const [fileList, setFileList] = useState<UploadFile[]>([]);
 
-  // antd upload props to handle file uploads
-  const props: UploadProps = {
-    name: 'file',
-    multiple: true,
-    beforeUpload(file) {
-      setUploadedFiles((prev) => [...prev, file as UploadedFile]);
-      return false; // prevent auto upload
-    },
-    onRemove(file) {
-      setUploadedFiles((prev) => prev.filter((f) => f.uid !== file.uid));
-    },
-    onDrop(e) {
-      console.log('Dropped files', e.dataTransfer.files);
-    }
-  };
-
-  // async fxn to handle file uploads to mock Api
-  const uploadFiles = async (files: UploadedFile[]): Promise<string[]> => {
-    const uploadedUrls: string[] = [];
-    for (const file of files) {
-      const formData = new FormData();
-      formData.append('file', file);
-      const response = await fetch(
-        'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
+  const { mutate, isPending } = useMutation({
+    mutationFn: async (formData: FormData) => {
+      const response = await axios.post(
+        `${API_BASE_URL}/requests/form-submit`, // Updated endpoint
+        formData,
         {
-          method: 'POST',
-          body: formData
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
         }
       );
-      const data = await response.json();
-      uploadedUrls.push(data.url); // adjust based on API response
-    }
-    return uploadedUrls;
-  };
-
-  // mutation to handle project request submission
-  const mutation = useMutation<void, Error, ProjectRequestFormData>({
-    mutationFn: submitProjectRequest,
-    onSuccess: () => {
-      message.success('Project Request Submitted Successfully!');
-      form.resetFields(); // Clear the form
-      setUploadedFiles([]); // Clear uploaded files
+      return response.data;
     },
-    onError: () => {
-      message.error('Something went wrong. Please try again.');
+    onSuccess: () => {
+      message.success('Submission successful!');
+      form.resetFields();
+      setFileList([]);
+    },
+    onError: (error: AxiosError<{ 
+      message?: string;
+      errors?: Record<string, string[]> 
+    }>) => {
+      if (error.response?.status === 422) {
+        // Handle validation errors
+        const validationErrors = error.response.data?.errors;
+        if (validationErrors) {
+          Object.entries(validationErrors).forEach(([field, messages]) => {
+            form.setFields([{
+              name: field,
+              errors: messages
+            }]);
+          });
+          message.error('Please fix the form errors');
+        } else {
+          message.error(error.response.data?.message || 'Validation failed');
+        }
+      } else {
+        message.error(error.message || 'Submission failed');
+      }
     }
   });
 
-  // handle form submission
-  const onFinish = async (values: FormValues) => {
-    try {
-      let uploadedUrls: string[] = [];
-      if (uploadedFiles.length > 0) {
-        uploadedUrls = await uploadFiles(uploadedFiles);
+  const onFinish = (values: ProjectFormValues) => {
+    const formData = new FormData();
+
+    // Append all form fields
+    Object.entries(values).forEach(([key, value]) => {
+      if (value !== undefined) {
+        formData.append(key, value.toString());
       }
+    });
 
-      const formattedValues: ProjectRequestFormData = {
-        name: values.name,
-        email: values.email,
-        phone: values.phone,
-        projectName: values['project-name'],
-        estimatedBudget: values['estimated-budget'],
-        projectDuration: values['project-duration'],
-        companyName: values['company-name'],
-        requiredTechnologies: values['required-technologies'],
-        projectDescription: values['project-description'],
-        uploadedFiles: uploadedUrls
-      };
+    // Append files
+    fileList.forEach((file) => {
+      if (file.originFileObj) {
+        formData.append('files', file.originFileObj);
+      }
+    });
 
-      mutation.mutate(formattedValues);
-      console.log('Form Data:', formattedValues);
-    } catch (error) {
-      console.error('Error uploading files:', error);
-      message.error('Failed to upload files.');
-    }
+    mutate(formData);
   };
+
+  const uploadProps: UploadProps = {
+    beforeUpload: (file) => {
+      setFileList((prev) => [...prev, file]);
+      return false;
+    },
+    onRemove: (file) => {
+      setFileList((prev) => prev.filter((f) => f.uid !== file.uid));
+    },
+    fileList,
+    multiple: true
+  };
+
 
   return (
     <div>
@@ -140,13 +133,13 @@ const ProjectRequest = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 mt-2 md:px-20">
           <Form.Item
             name="name"
-            rules={[{ required: true, message: 'Please Enter your Name' }]}
+            rules={[{ required: true, message: 'Please enter your name' }]}
           >
             <Input size="large" placeholder="Name" autoComplete="auto" />
           </Form.Item>
           <Form.Item
             name="email"
-            rules={[{ required: true, message: 'Please Enter your Email' }]}
+            rules={[{ required: true, message: 'Please enter your email' }]}
           >
             <Input size="large" placeholder="Email" />
           </Form.Item>
@@ -154,7 +147,7 @@ const ProjectRequest = () => {
           <Form.Item
             name="phone"
             rules={[
-              { required: true, message: 'Please Enter your Phone Number' }
+              { required: true, message: 'Please enter your phone number' }
             ]}
           >
             <PhoneInput
@@ -165,43 +158,43 @@ const ProjectRequest = () => {
             />
           </Form.Item>
           <Form.Item
-            name="project-name"
+            name="project_name"
             rules={[
-              { required: true, message: 'Please Enter your Project Name' }
+              { required: true, message: 'Please enter your project name' }
             ]}
           >
             <Input size="large" placeholder="Project Name" />
           </Form.Item>
           <Form.Item
-            name="estimated-budget"
+            name="estimated_budget"
             rules={[
-              { required: true, message: 'Please Enter your Estimated Budget' }
+              { required: true, message: 'Please enter your estimated budget' }
             ]}
           >
             <Input size="large" placeholder="Estimated Budget" />
           </Form.Item>
           <Form.Item
-            name="project-duration"
+            name="max_project_time"
             rules={[
-              { required: true, message: 'Please Enter your Project Duration' }
+              { required: true, message: 'Please enter your project duration' }
             ]}
           >
             <Input size="large" placeholder="Duration (days) e.g 30days" />
           </Form.Item>
           <Form.Item
-            name="company-name"
+            name="company_name"
             rules={[
-              { required: true, message: 'Please Enter your Company Name' }
+              { required: true, message: 'Please enter your company name' }
             ]}
           >
             <Input size="large" placeholder="Company Name" />
           </Form.Item>
           <Form.Item
-            name="required-technologies"
+            name="required_technologies"
             rules={[
               {
                 required: true,
-                message: 'Please Enter your Required Technologies'
+                message: 'Please enter your required technologies'
               }
             ]}
           >
@@ -213,7 +206,7 @@ const ProjectRequest = () => {
         </div>
 
         <div className="grid grid-cols-1 gap-6 mt-4 md:px-20">
-          <Dragger {...props}>
+          <Dragger {...uploadProps}>
             <p className="ant-upload-drag-icon">
               <InboxOutlined />
             </p>
@@ -229,11 +222,11 @@ const ProjectRequest = () => {
 
         <div className="grid grid-cols-1 gap-6 mt-2 md:px-20">
           <Form.Item
-            name="project-description"
+            name="project_description"
             rules={[
               {
                 required: true,
-                message: 'Please Enter your Project Description'
+                message: 'Please enter your project description'
               }
             ]}
           >
@@ -248,9 +241,9 @@ const ProjectRequest = () => {
           type="primary"
           htmlType="submit"
           form="project-request-form"
-          className="flex-1  !h-[50px] !w-[200px]"
+          className="flex-1 !h-[50px] !w-[200px]"
           size="large"
-          loading={mutation.isPending} // Changed from isLoading to isPending for newer versions
+          loading={isPending}
         >
           Submit
         </Button>
