@@ -1,134 +1,124 @@
-// API calls
-import { useMutation } from '@tanstack/react-query';
-import axios, { AxiosError } from 'axios';
 // Third party
-import { Button, Form, Input, Upload } from 'antd';
+import { Button, Card, Form, Input, Upload, message } from 'antd';
 import type { UploadFile, UploadProps } from 'antd';
 import PhoneInput from 'antd-phone-input';
 import { InboxOutlined } from '@ant-design/icons';
-import { message } from 'antd';
 import { useState } from 'react';
+import { normFile } from '@utils/normHelperFile';
 
-// Define API base URL
-const API_BASE_URL = 'https://api-colauncha.vercel.app/api';
-
-export interface ProjectRequestFormData {
-  name: string;
-  email: string;
+interface PhoneInputValue {
+  countryCode: string;
   phone: string;
-  projectName: string;
-  estimatedBudget: string;
-  projectDuration: string;
-  companyName: string;
-  requiredTechnologies: string;
-  projectDescription: string;
-  uploadedFiles?: string[];
+  country: string;
+  isValid: boolean;
 }
 
-interface ProjectFormValues {
+interface FormValues {
   name: string;
   email: string;
-  phone: string;
+  phone: PhoneInputValue | string;
   project_name: string;
   estimated_budget: string;
   max_project_time: string;
   company_name: string;
   required_technologies: string;
   project_description: string;
+  attachment?: UploadFile[];
 }
 
-const ProjectRequest = () => {
-   const { Dragger } = Upload;
-  const [form] = Form.useForm();
-  const [fileList, setFileList] = useState<UploadFile[]>([]);
+const uploadProps: UploadProps = {
+  name: 'file',
+  multiple: true,
+  accept: '.pdf,.doc,.docx,.jpg,.png',
+  beforeUpload: (file: File) => {
+    const isLt5M = file.size / 1024 / 1024 < 5;
+    if (!isLt5M) {
+      message.error('File must be smaller than 5MB!');
+      return Upload.LIST_IGNORE;
+    }
+    return false;
+  }
+};
 
-  const { mutate, isPending } = useMutation({
-    mutationFn: async (formData: FormData) => {
-      const response = await axios.post(
-        `${API_BASE_URL}/requests/form-submit`, // Updated endpoint
-        formData,
+const ProjectRequest = () => {
+  const { Dragger } = Upload;
+  const [form] = Form.useForm();
+  const [isPending, setIsPending] = useState(false);
+
+  const onFinish = async (values: FormValues) => {
+    setIsPending(true);
+    try {
+      const formData = new FormData();
+
+      // Handle phone input
+      if (values.phone && typeof values.phone === 'object') {
+        formData.append('phone', values.phone.phone);
+        formData.append('countryCode', values.phone.countryCode);
+      } else {
+        formData.append('phone', values.phone);
+      }
+
+      // Append other fields
+      Object.entries(values).forEach(([key, value]) => {
+        if (key === 'attachment' && Array.isArray(value)) {
+          value.forEach((file) => {
+            if (file.originFileObj) {
+              formData.append('files', file.originFileObj);
+            }
+          });
+        } else if (key !== 'phone' && value !== undefined && value !== null) {
+          formData.append(key, String(value));
+        }
+      });
+
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/form-submit`,
         {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
+          method: 'POST',
+          body: formData
         }
       );
-      return response.data;
-    },
-    onSuccess: () => {
-      message.success('Submission successful!');
+
+      if (!response.ok) {
+        throw new Error(`Submission failed with status ${response.status}`);
+      }
+
+      const data = await response.json();
+      message.success(
+        data.message || 'Project request submitted successfully!'
+      );
       form.resetFields();
-      setFileList([]);
-    },
-    onError: (error: AxiosError<{ 
-      message?: string;
-      errors?: Record<string, string[]> 
-    }>) => {
-      if (error.response?.status === 422) {
-        // Handle validation errors
-        const validationErrors = error.response.data?.errors;
-        if (validationErrors) {
-          Object.entries(validationErrors).forEach(([field, messages]) => {
-            form.setFields([{
-              name: field,
-              errors: messages
-            }]);
-          });
-          message.error('Please fix the form errors');
-        } else {
-          message.error(error.response.data?.message || 'Validation failed');
-        }
-      } else {
-        message.error(error.message || 'Submission failed');
-      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      message.error(
+        error instanceof Error
+          ? error.message
+          : 'Failed to submit project request. Please try again.'
+      );
+    } finally {
+      setIsPending(false);
     }
-  });
-
-  const onFinish = (values: ProjectFormValues) => {
-    const formData = new FormData();
-
-    // Append all form fields
-    Object.entries(values).forEach(([key, value]) => {
-      if (value !== undefined) {
-        formData.append(key, value.toString());
-      }
-    });
-
-    // Append files
-    fileList.forEach((file) => {
-      if (file.originFileObj) {
-        formData.append('files', file.originFileObj);
-      }
-    });
-
-    mutate(formData);
   };
-
-  const uploadProps: UploadProps = {
-    beforeUpload: (file) => {
-      setFileList((prev) => [...prev, file]);
-      return false;
-    },
-    onRemove: (file) => {
-      setFileList((prev) => prev.filter((f) => f.uid !== file.uid));
-    },
-    fileList,
-    multiple: true
-  };
-
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold mt-10 mb-4 text-center">Project Request</h1>
-      <p className="text-base">
-        Please fill out the form below to request a project.
-      </p>
+    <div className="w-[80%] mx-auto my-10">
+     <div className='w-full lg:w-[85%] mx-auto'>
+       <h1 className="text-2xl font-bold mt-10 mb-4 text-center">
+        Request a Project
+      </h1>
+      <Card className="!text-[11px] !text-black !text-center mb-6">
+        Please fill out the form below to request a project. our dedicated team
+        will review your request and get back to you with mvp as soon as
+        possible.
+      </Card>
+     </div>
       <Form
         form={form}
         layout="vertical"
         onFinish={onFinish}
         requiredMark={false}
         id="project-request-form"
+        validateTrigger={['onBlur', 'onChange']}
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 mt-2 md:px-20">
           <Form.Item
@@ -206,34 +196,55 @@ const ProjectRequest = () => {
         </div>
 
         <div className="grid grid-cols-1 gap-6 mt-4 md:px-20">
-          <Dragger {...uploadProps}>
-            <p className="ant-upload-drag-icon">
-              <InboxOutlined />
-            </p>
-            <p className="ant-upload-text">
-              Click or drag file to this area to upload
-            </p>
-            <p className="ant-upload-hint">
-              Support for a single or bulk upload. Strictly prohibited from
-              uploading company data or other banned files.
-            </p>
-          </Dragger>
+          <Form.Item
+            name="attachment"
+            valuePropName="fileList"
+            getValueFromEvent={normFile}
+            rules={[
+              {
+                required: true,
+                message: 'Please upload your resume/CV'
+              }
+            ]}
+          >
+            <Dragger {...uploadProps}>
+              <p className="ant-upload-drag-icon">
+                <InboxOutlined />
+              </p>
+              <p className="ant-upload-text">
+                Click or drag file to this area to upload
+              </p>
+              <p className="ant-upload-hint">
+                Supported formats: PDF, DOC, DOCX (Max 5MB)
+              </p>
+            </Dragger>
+          </Form.Item>
         </div>
 
         <div className="grid grid-cols-1 gap-6 mt-2 md:px-20">
           <Form.Item
-            name="project_description"
+            name="why_volunteer"
             rules={[
               {
                 required: true,
-                message: 'Please enter your project description'
+                message: 'Please tell us something about yourself'
+              },
+              {
+                min: 50,
+                message: 'Please write at least 50 characters about yourself'
+              },
+              {
+                max: 500,
+                message: 'Please keep your introduction under 500 characters'
               }
             ]}
           >
             <Input.TextArea
               size="large"
-              placeholder="Project Description"
+              placeholder="Write a few words about yourself (50-500 characters)"
               rows={4}
+              showCount
+              maxLength={500}
             />
           </Form.Item>
         </div>
