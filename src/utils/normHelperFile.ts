@@ -1,5 +1,4 @@
-import {message} from 'antd';
-import {Upload} from 'antd'; 
+
 
 /**
  * Normalizes the file input for antd Upload component.
@@ -13,16 +12,3 @@ export const normFile = (e:any) => {
   return e?.fileList;
 };
 
-const props = {
-  name: 'file',
-  multiple: false,
-  accept: '.pdf,.doc,.docx',
-  beforeUpload: (file: File) => {
-    const isLt5M = file.size / 1024 / 1024 < 5;
-    if (!isLt5M) {
-      message.error('File must be smaller than 5MB!');
-      return Upload.LIST_IGNORE;
-    }
-    return false;
-  },
-};

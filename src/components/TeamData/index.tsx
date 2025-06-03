@@ -29,7 +29,7 @@ const defaultMembers: TeamMemberProps[] = [
       twitter: 'https://twitter.com/johndoe'
     }
   },
-   {
+  {
     teamImg: '/png/isabella.png',
     name: 'Isabella',
     position: 'Digital Marketer',
@@ -77,18 +77,7 @@ const defaultMembers: TeamMemberProps[] = [
       twitter: 'https://twitter.com/johndoe'
     }
   },
-  {
-    teamImg: '/jpg/blessed.jpg',
-    name: 'Blessed Akhigbe',
-    position: 'Frontend Development Lead',
-    className: 'bg-red-200/30',
-    description:
-      'Mr. Blessed Akhigbe is a dedicated frontend developer with a keen eye for detail. His work in creating responsive and accessible web applications has been invaluable to our team.',
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/akano-oluwasola',
-      twitter: 'https://twitter.com/johndoe'
-    }
-  },
+
   {
     teamImg: '/png/ify2.png',
     name: 'Ifunanya Ugwoke',
@@ -112,15 +101,13 @@ const defaultMembers: TeamMemberProps[] = [
       linkedin: 'https://www.linkedin.com/in/akano-oluwasola',
       twitter: 'https://twitter.com/johndoe'
     }
-  },
-
- 
+  }
 ];
 
 const Team: React.FC<TeamProps> = ({ members = defaultMembers }) => {
   return (
     <div>
-      <div className=" w-full md:w-[95%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center my-10">
+      <div className=" w-full md:w-[95%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 place-items-center my-10">
         {members.map((member, index) => (
           <CustomCard
             key={index}
