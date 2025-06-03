@@ -2,6 +2,7 @@ import { Button, Card, Form } from 'antd';
 import { UploadProps } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import { message, Upload } from 'antd';
+import { normFile } from '@utils/normHelperFile';
 
 const UploadProposal = () => {
   const { Dragger } = Upload;
@@ -31,14 +32,14 @@ const UploadProposal = () => {
   };
   return (
     <div>
-      <div className="grid grid-cols-1 gap-6 mt-4 md:px-20">
+      <div className=" w-full lg:w-[80%] mx-auto grid grid-cols-1 gap-6 mt-4 md:px-20">
+        <h1 className="text-2xl font-bold text-center">Upload Proposal</h1>
         <Card>
-          <h1 className="text-2xl font-bold text-center">Upload Proposal</h1>
-          <p className="text-center mt-4">
+          <p className="text-[12px] text-black text-center mt-4">
             Please upload your proposal in the format accepted below. The file
             size should not exceed 5MB.
           </p>
-          <p className="text-center mt-2 text-blue-900">
+          <p className="text-center mt-2 text-[12px] text-blac">
             Accepted formats: PDF, DOCX, PPTX
           </p>
         </Card>
@@ -49,18 +50,30 @@ const UploadProposal = () => {
           requiredMark={false}
           id="proposal-form"
         >
-          <div>
-            <Dragger {...props}>
-              <p className="ant-upload-drag-icon">
-                <InboxOutlined />
-              </p>
-              <p className="ant-upload-text">
-                Click or drag file to this area to upload
-              </p>
-              <p className="ant-upload-hint">
-                Drag File Here Or Click The Button Below
-              </p>
-            </Dragger>
+          <div className="grid w-full grid-cols-1 gap-6 mt-4 md:px-20">
+            <Form.Item
+              name="attachment"
+              valuePropName="fileList"
+              getValueFromEvent={normFile}
+              rules={[
+                {
+                  required: true,
+                  message: 'Please upload your resume/CV'
+                }
+              ]}
+            >
+              <Dragger {...props}>
+                <p className="ant-upload-drag-icon">
+                  <InboxOutlined />
+                </p>
+                <p className="ant-upload-text !text-[12px]">
+                  Click or drag file to this area to upload
+                </p>
+                <p className="ant-upload-hint !text-[12px]">
+                  Supported formats: PDF, DOC, DOCX (Max 5MB)
+                </p>
+              </Dragger>
+            </Form.Item>
           </div>
 
           <Button

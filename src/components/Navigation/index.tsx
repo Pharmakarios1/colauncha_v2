@@ -39,7 +39,7 @@ const Navigation = () => {
           onClick={handleTalentRequest}
           className=" cursor-pointer md:flex bg-blue-500 text-white text-sm text-nowrap px-4 py-2 rounded-4xl hover:bg-blue-600 transition duration-300"
         >
-          Get Started
+          {isRootPath ? 'Get Started' : 'Dashboard'}
         </motion.button>
       </div>
     </div>

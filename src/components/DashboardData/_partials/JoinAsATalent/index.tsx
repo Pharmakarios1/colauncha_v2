@@ -355,10 +355,10 @@ const TalentRequest = () => {
               <p className="ant-upload-drag-icon">
                 <InboxOutlined />
               </p>
-              <p className="ant-upload-text">
+              <p className="ant-upload-text !text-[12px]">
                 Click or drag file to this area to upload
               </p>
-              <p className="ant-upload-hint">
+              <p className="ant-upload-hint !text-[12px]">
                 Supported formats: PDF, DOC, DOCX (Max 5MB)
               </p>
             </Dragger>
