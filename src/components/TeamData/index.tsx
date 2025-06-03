@@ -1,5 +1,4 @@
-import CustomCard from "./CustomCard";
-
+import CustomCard from './CustomCard';
 
 export interface TeamMemberProps {
   teamImg: string;
@@ -30,13 +29,37 @@ const defaultMembers: TeamMemberProps[] = [
       twitter: 'https://twitter.com/johndoe'
     }
   },
+   {
+    teamImg: '/png/isabella.png',
+    name: 'Isabella',
+    position: 'Digital Marketer',
+    className: 'bg-[#FF8C0052]',
+    description:
+      'Miss Isabella Ngonadi has an experience in administrative support, customer support, career strategy and digital marketing skill to help grow businesses. ',
+    socialLinks: {
+      linkedin: 'https://www.linkedin.com/in/akano-oluwasola',
+      twitter: 'https://twitter.com/johndoe'
+    }
+  },
   {
     teamImg: '/png/Iyanu2.png',
     name: 'Iyanu Ajimobi',
-    position: 'Backend Develope/Technical Lead',
+    position: 'Backend Developer/Technical Lead',
     className: 'bg-[#F6000052]',
     description:
       'Mr. Iyanu Ajimobi is a skilled backend developer with a deep understanding of system architecture and cloud technologies. His leadership in technical projects has been pivotal in achieving our goals.',
+    socialLinks: {
+      linkedin: 'https://www.linkedin.com/in/akano-oluwasola',
+      twitter: 'https://twitter.com/johndoe'
+    }
+  },
+  {
+    teamImg: '/png/israel.png',
+    name: 'Isreal Evwerhamre',
+    position: 'Backend Developer',
+    className: 'bg-[#F4909052]',
+    description:
+      'Mr Isreal Evwerhamre is a detail-oriented Back-end developer, proficient in Javasript, HTML, CSS, and Node.Js, with a passion for creating high performance web applications.',
     socialLinks: {
       linkedin: 'https://www.linkedin.com/in/akano-oluwasola',
       twitter: 'https://twitter.com/johndoe'
@@ -67,6 +90,18 @@ const defaultMembers: TeamMemberProps[] = [
     }
   },
   {
+    teamImg: '/png/ify2.png',
+    name: 'Ifunanya Ugwoke',
+    position: 'Frontend Developer',
+    className: 'bg-[#FF8C0052]',
+    description:
+      'Miss. Ifunanya Ugwoke is a talented frontend developer known for her attention to detail and commitment to delivering high-quality code. Her work has significantly enhanced the performance of our web applications.',
+    socialLinks: {
+      linkedin: 'https://www.linkedin.com/in/akano-oluwasola',
+      twitter: 'https://twitter.com/johndoe'
+    }
+  },
+  {
     teamImg: '/png/uthman2.png',
     name: 'Adebari Uthman Titilope',
     position: 'Frontend Developer',
@@ -78,30 +113,8 @@ const defaultMembers: TeamMemberProps[] = [
       twitter: 'https://twitter.com/johndoe'
     }
   },
-  {
-    teamImg: '/png/ify2.png',
-    name: 'Ifunanya Ugwoke',
-    position: 'Frontend Developer',
-    className: 'bg-[#FF8C0052]',
-    description:
-      'Ms. Ifunanya Ugwoke is a talented frontend developer known for her attention to detail and commitment to delivering high-quality code. Her work has significantly enhanced the performance of our web applications.',
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/akano-oluwasola',
-      twitter: 'https://twitter.com/johndoe'
-    }
-  },
-  {
-    teamImg: '/jpg/isabella.jpg',
-    name: 'Isabella',
-    position: 'Digital Marketer',
-    className: 'bg-purple-300/30',
-    description:
-      'Ms. Isabella is a dynamic digital marketer with a knack for creating effective online campaigns. Her strategies have helped us reach a wider audience and increase our brand visibility.',
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/akano-oluwasola',
-      twitter: 'https://twitter.com/johndoe'
-    }
-  }
+
+ 
 ];
 
 const Team: React.FC<TeamProps> = ({ members = defaultMembers }) => {
