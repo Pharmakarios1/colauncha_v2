@@ -2,7 +2,7 @@
 
 import {
   LogoutOutlined,
-  TeamOutlined,
+  ProjectOutlined,
   UploadOutlined,
   UserOutlined
 } from '@ant-design/icons';
@@ -10,7 +10,7 @@ import {
 import Sider from 'antd/es/layout/Sider';
 
 import { Layout, Menu } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router';
 import { useNavigate } from 'react-router';
 
@@ -22,20 +22,21 @@ import Logout from '@components/DashboardData/_partials/Logout';
 
 const baseurl = '/dashboard/';
 export const items = [
-  {
-    label: 'Team',
-    key: '1',
-    icon: <TeamOutlined />,
-    comp: <ProjectRequest />,
-    path: `${baseurl}project-request`
-  },
-  {
+   {
     label: 'Talent',
-    key: '2',
+    key: '1',
     icon: <UserOutlined />,
     comp: <TalentRequest />,
     path: `${baseurl}join-as-talent`
   },
+  {
+    label: 'Project',
+    key: '2',
+    icon: <ProjectOutlined />,
+    comp: <ProjectRequest />,
+    path: `${baseurl}project-request`
+  },
+ 
 
   {
     label: 'Proposal',
@@ -55,33 +56,44 @@ export const items = [
 
 const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(true);
+  const [mobileCollapsed, setMobileCollapsed] = useState(window.innerWidth < 768);
   const navigate = useNavigate();
   const handleSiderCollapse = (collapsed: boolean) => {
     setCollapsed(!collapsed);
   };
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setMobileCollapsed(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }
+  , []);
   return (
     <Layout style={{ minHeight: '100vh' }}>
-      <Layout.Header>
+      <Layout.Header className='!fixed !z-100 !w-full '>
         <p className="text-sm text-center md:text-left md:text-2xl py-5 text-nowrap">
           welcome to the Dashboard
         </p>
       </Layout.Header>
       <Layout>
         <Sider
-          style={{
-            paddingTop: '100px',
-            position: 'fixed',
-            height: '100vh',
-            zIndex: 100
-          }}
+        className='pt-[100px] !fixed h-[100vh] z-20 '
           onCollapse={handleSiderCollapse}
           collapsible
           collapsed={!collapsed}
-          width={200}
-          collapsedWidth={0}
+          width={150}
+         {...mobileCollapsed ? { collapsedWidth: 0 } : {collapsedWidth: 80}}
         >
           <Menu
             theme="dark"
+            className='!h-full lg:!space-y-10'
             mode="inline"
             defaultSelectedKeys={['1']}
             items={items}

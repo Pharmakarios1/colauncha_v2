@@ -119,7 +119,7 @@ const ProjectRequest = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold">Project Request</h1>
+      <h1 className="text-2xl font-bold mt-10 mb-4 text-center">Project Request</h1>
       <p className="text-base">
         Please fill out the form below to request a project.
       </p>

@@ -109,7 +109,7 @@ const TalentRequest = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold">
+      <h1 className="text-2xl font-bold mt-10 mb-4 text-center">
         Join Us <span className="text-red-500">!</span>
       </h1>
       <div className="flex justify-between items-center lg:w-[85%] mx-auto">

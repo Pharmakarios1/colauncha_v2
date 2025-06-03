@@ -66,7 +66,7 @@ const App = () => {
             <Route path="/team" element={<OurTeam />} />
             <Route path="*" element={<Error404 />} />
             <Route path="/dashboard" element={<Dashboard />}>
-              <Route index element={<ProjectRequest />} />
+              <Route index element={<TalentRequest />} />
               <Route path="join-as-talent" element={<TalentRequest />} />
               <Route path="project-request" element={<ProjectRequest />} />
               <Route path="upload-proposal" element={<UploadProposal />} />
