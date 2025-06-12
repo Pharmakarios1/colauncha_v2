@@ -28,7 +28,7 @@ const Contact = () => {
               <div className="grid grid-cols-1 lg:grid-cols-5 mt-2">
                 <div>
                   <MailOutlined className="!text-blue-500 !text-lg" />
-                  <span className="ml-2">Info@colauncha.com</span>
+                  <span className="ml-2">info@colauncha.com</span>
                 </div>
                 <div>
                   <PhoneOutlined className="!text-blue-500 !text-lg" />
