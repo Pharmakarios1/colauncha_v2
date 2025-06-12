@@ -43,7 +43,7 @@ const ContactUs = () => {
           <div className="flex justify-center items-center gap-2 md:gap-10 text-nowrap">
             <img src="/gif/call.gif" alt="" className="w-14 h-20" />
             <div>
-              <h3>Colauncha@gmail.com</h3>
+              <h3>colauncha@gmail.com</h3>
               <p>+234 98356672867</p>
             </div>
           </div>

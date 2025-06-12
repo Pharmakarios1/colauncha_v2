@@ -21,8 +21,8 @@ interface FormValues {
   estimated_budget: string;
   max_project_time: string;
   company_name: string;
-  required_technologies: string;
-  project_description: string;
+  required_skills: string;
+  description: string;
   attachment?: UploadFile[];
 }
 
@@ -53,7 +53,7 @@ const ProjectRequest = () => {
       // Handle phone input
       if (values.phone && typeof values.phone === 'object') {
         formData.append('phone', values.phone.phone);
-        formData.append('countryCode', values.phone.countryCode);
+        formData.append('country', values.phone.countryCode);
       } else {
         formData.append('phone', values.phone);
       }
@@ -166,7 +166,7 @@ const ProjectRequest = () => {
           <Form.Item
             name="max_project_time"
             rules={[
-              { required: true, message: 'Please enter your project duration' }
+              { required: true, message: 'Please enter your project duration (days)' }
             ]}
           >
             <Input size="large" placeholder="Duration (days) e.g 30days" />
@@ -180,17 +180,17 @@ const ProjectRequest = () => {
             <Input size="large" placeholder="Company Name" />
           </Form.Item>
           <Form.Item
-            name="required_technologies"
+            name="required_skills"
             rules={[
               {
                 required: true,
-                message: 'Please enter your required technologies'
+                message: 'Please enter your required skills'
               }
             ]}
           >
             <Input
               size="large"
-              placeholder="Required Technologies e.g React, Node.js"
+              placeholder="Required Skills e.g React, Node.js"
             />
           </Form.Item>
         </div>
@@ -223,7 +223,7 @@ const ProjectRequest = () => {
 
         <div className="grid grid-cols-1 gap-6 mt-2 md:px-20">
           <Form.Item
-            name="why_volunteer"
+            name="description"
             rules={[
               {
                 required: true,
@@ -241,7 +241,7 @@ const ProjectRequest = () => {
           >
             <Input.TextArea
               size="large"
-              placeholder="Write a few words about yourself (50-500 characters)"
+              placeholder="Write a few words describing the project (50-500 characters)"
               rows={4}
               showCount
               maxLength={500}
