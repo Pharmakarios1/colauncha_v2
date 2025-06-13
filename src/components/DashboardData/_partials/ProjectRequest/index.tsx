@@ -14,7 +14,7 @@ interface PhoneInputValue {
 }
 
 interface FormValues {
-  name: string;
+  country: string;
   email: string;
   phone: PhoneInputValue | string;
   project_name: string;
@@ -53,7 +53,7 @@ const ProjectRequest = () => {
       // Handle phone input
       if (values.phone && typeof values.phone === 'object') {
         formData.append('phone', values.phone.phone);
-        formData.append('country', values.phone.countryCode);
+        formData.append('country', values.phone.country);
       } else {
         formData.append('phone', values.phone);
       }
@@ -71,6 +71,7 @@ const ProjectRequest = () => {
         }
       });
 
+      console.log(formData);
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/form-submit`,
         {
@@ -119,19 +120,28 @@ const ProjectRequest = () => {
         requiredMark={false}
         id="project-request-form"
         validateTrigger={['onBlur', 'onChange']}
+        initialValues={ {country: 'Nigeria'} }
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 mt-2 md:px-20">
-          <Form.Item
-            name="name"
-            rules={[{ required: true, message: 'Please enter your name' }]}
+        <Form.Item
+            name="project_name"
+            rules={[
+              { required: true, message: 'Please enter your project name' }
+            ]}
           >
-            <Input size="large" placeholder="Name" autoComplete="auto" />
+            <div className="flex flex-col items-start">
+              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='project_name'>Project Name</label>
+              <Input size="large" placeholder="Project Name" />
+            </div>
           </Form.Item>
           <Form.Item
             name="email"
             rules={[{ required: true, message: 'Please enter your email' }]}
           >
-            <Input size="large" placeholder="Email" />
+            <div className="flex flex-col items-start">
+              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor="email">Email</label>
+              <Input size="large" placeholder="Email" />
+            </div>
           </Form.Item>
 
           <Form.Item
@@ -140,28 +150,33 @@ const ProjectRequest = () => {
               { required: true, message: 'Please enter your phone number' }
             ]}
           >
-            <PhoneInput
-              size="large"
-              placeholder="Phone number"
-              enableSearch
-              country="ng" // Default country can be set to 'ng' for Nigeria
-            />
+            <div className="flex flex-col items-start">
+              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='phone'>Phone number</label>
+              <PhoneInput
+                size="large"
+                placeholder="Phone number"
+                enableSearch
+                disableParentheses={true}
+                onlyCountries={['ng']}
+                country="ng" // Default country can be set to 'ng' for Nigeria
+              />
+            </div>
           </Form.Item>
-          <Form.Item
-            name="project_name"
-            rules={[
-              { required: true, message: 'Please enter your project name' }
-            ]}
-          >
-            <Input size="large" placeholder="Project Name" />
-          </Form.Item>
+
           <Form.Item
             name="estimated_budget"
             rules={[
               { required: true, message: 'Please enter your estimated budget' }
             ]}
           >
-            <Input size="large" placeholder="Estimated Budget" />
+            <div className="flex flex-col items-start">
+              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='estimated_budget'>Budget (₦)</label>
+              <Input
+                size="large"
+                placeholder="Estimated Budget"
+                addonBefore="₦"
+              />
+            </div>
           </Form.Item>
           <Form.Item
             name="max_project_time"
@@ -169,7 +184,10 @@ const ProjectRequest = () => {
               { required: true, message: 'Please enter your project duration (days)' }
             ]}
           >
-            <Input size="large" placeholder="Duration (days) e.g 30days" />
+            <div className="flex flex-col items-start">
+              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='max_project_time'>Project Duration (Days)</label>
+              <Input size="large" placeholder="Duration (days) e.g 30days" />
+            </div>
           </Form.Item>
           <Form.Item
             name="company_name"
@@ -177,7 +195,10 @@ const ProjectRequest = () => {
               { required: true, message: 'Please enter your company name' }
             ]}
           >
-            <Input size="large" placeholder="Company Name" />
+            <div className="flex flex-col items-start">
+              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='company_name'>Company Name</label>
+              <Input size="large" placeholder="Company Name" />
+            </div>
           </Form.Item>
           <Form.Item
             name="required_skills"
@@ -188,24 +209,31 @@ const ProjectRequest = () => {
               }
             ]}
           >
-            <Input
-              size="large"
-              placeholder="Required Skills e.g React, Node.js"
-            />
+            <div className="flex flex-col items-start">
+              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='required_skills'>Skills</label>
+              <Input
+                size="large"
+                placeholder="Required Skills e.g React, Node.js"
+              />
+            </div>
+          </Form.Item>
+          <Form.Item
+            name="country"
+            rules={[
+              { required: true, message: 'Please enter your Country' }
+            ]}
+          >
+            <div className="flex flex-col items-start">
+              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='country'>Country</label>
+              <Input size="large" value={'Nigeria'} readOnly placeholder="Country" />
+            </div>
           </Form.Item>
         </div>
-
         <div className="grid grid-cols-1 gap-6 mt-4 md:px-20">
           <Form.Item
             name="attachment"
             valuePropName="fileList"
             getValueFromEvent={normFile}
-            rules={[
-              {
-                required: true,
-                message: 'Please upload your resume/CV'
-              }
-            ]}
           >
             <Dragger {...uploadProps}>
               <p className="ant-upload-drag-icon">
@@ -227,25 +255,28 @@ const ProjectRequest = () => {
             rules={[
               {
                 required: true,
-                message: 'Please tell us something about yourself'
+                message: 'Please tell us about the project'
               },
               {
-                min: 50,
-                message: 'Please write at least 50 characters about yourself'
+                min: 30,
+                message: 'Please write at least 30 characters about yourself'
               },
               {
                 max: 500,
-                message: 'Please keep your introduction under 500 characters'
+                message: 'Please keep your description under 500 characters'
               }
             ]}
           >
-            <Input.TextArea
-              size="large"
-              placeholder="Write a few words describing the project (50-500 characters)"
-              rows={4}
-              showCount
-              maxLength={500}
-            />
+            <div className="flex flex-col items-start">
+              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='description'>Description</label>
+              <Input.TextArea
+                size="large"
+                placeholder="Write a few words describing the project (30-500 characters)"
+                rows={4}
+                showCount
+                maxLength={500}
+              />
+            </div>
           </Form.Item>
         </div>
         <Button

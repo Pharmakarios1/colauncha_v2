@@ -1,5 +1,5 @@
 //third party libraries
-import { BrowserRouter as Router, Routes, Route } from 'react-router';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router';
 import { ConfigProvider } from 'antd';
 import '@ant-design/v5-patch-for-react-19';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -22,6 +22,23 @@ import Footer from '@components/Footer';
 import Contact from '@components/Contact';
 
 const queryClient = new QueryClient();
+
+// Component to conditionally render Contact and Footer
+const ConditionalFooterContact = () => {
+  const location = useLocation();
+  const isDashboard = location.pathname.startsWith('/dashboard');
+  
+  if (isDashboard) {
+    return null; // Don't render Contact and Footer on dashboard routes
+  }
+  
+  return (
+    <>
+      <Contact />
+      <Footer />
+    </>
+  );
+};
 
 const App = () => {
   const primaryColor = '#3783FF';
@@ -53,6 +70,7 @@ const App = () => {
       }
     }
   };
+  
   return (
     <ConfigProvider theme={{ ...antTheme }}>
       <Router>
@@ -66,15 +84,14 @@ const App = () => {
             <Route path="/team" element={<OurTeam />} />
             <Route path="*" element={<Error404 />} />
             <Route path="/dashboard" element={<Dashboard />}>
-              <Route index element={<TalentRequest />} />
-              <Route path="join-as-talent" element={<TalentRequest />} />
+              <Route index element={<ProjectRequest />} />
               <Route path="project-request" element={<ProjectRequest />} />
+              <Route path="join-as-talent" element={<TalentRequest />} />
               <Route path="upload-proposal" element={<UploadProposal />} />
               <Route path="logout" element={<Logout />} />
             </Route>
           </Routes>
-          <Contact />
-          <Footer />
+          <ConditionalFooterContact />
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </Router>
