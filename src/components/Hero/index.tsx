@@ -173,7 +173,7 @@ const Hero = () => {
               className="mt-16 rounded-2xl! px-12!"
               size="large"
               type="primary"
-              onClick={() => navigate('/dashboard')}
+              onClick={() => navigate('/contact')}
             >
               Get started
             </Button>

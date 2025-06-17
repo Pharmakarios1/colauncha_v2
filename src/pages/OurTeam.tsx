@@ -19,9 +19,9 @@ const OurTeam = () => {
       <div className=" relative flex flex-col md:flex-row items-center bg-white gap-4 w-full h-full p-4 rounded-md md:max-w-[600px] my-10 shadow-2xl">
         <img src="/png/sholaEdited.png" alt="" className="w-80 h-72" />
         <div className="flex flex-col justify-center items-start gap-2">
-          <h2 className="text-2xl font-bold ">Shola Akano</h2>
+          <h2 className="text-2xl font-bold ">Oluwasola Akano</h2>
           <p className="text-sm">
-            Mr. Sola Akano is a visionary leader with over 10 years of
+            Mr. Oluwasola Akano is a visionary leader with over 10 years of
             experience in the tech & energineering industry. He has a passion
             for innovation and a commitment to excellence.
           </p>

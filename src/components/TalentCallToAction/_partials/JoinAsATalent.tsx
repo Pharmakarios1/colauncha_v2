@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 const JoinAsATalent = () => {
   const navigate = useNavigate();
   const handleNavigationClick = () => {
-    navigate('/dashboard');
+    navigate('/contact/join-as-talent');
   };
   const animationStates = {
     hidden: { opacity: 0, y: 100 },

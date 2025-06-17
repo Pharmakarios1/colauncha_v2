@@ -105,9 +105,9 @@ const ProjectRequest = () => {
     <div className="w-[80%] mx-auto my-10">
      <div className='w-full lg:w-[85%] mx-auto'>
        <h1 className="text-2xl font-bold mt-10 mb-4 text-center">
-        Request a Project
+        Request a Team/MVP
       </h1>
-      <Card className="!text-[11px] !text-black !text-center mb-6">
+      <Card className="!text-[14px] !text-gray-700 !text-center mb-6">
         Please fill out the form below to request a project. our dedicated team
         will review your request and get back to you with mvp as soon as
         possible.

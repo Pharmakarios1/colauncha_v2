@@ -15,18 +15,18 @@ import Dashboard from '@pages/Dashboard';
 import ProjectRequest from '@components/DashboardData/_partials/ProjectRequest';
 import TalentRequest from '@components/DashboardData/_partials/JoinAsATalent';
 import UploadProposal from '@components/DashboardData/_partials/Proposals';
-import Logout from '@components/DashboardData/_partials/Logout';
 import Error404 from '@components/ErrorHandler/Error404';
 import MobileNav from '@components/Navigation/_partials/MobileNav';
 import Footer from '@components/Footer';
 import Contact from '@components/Contact';
+import ScrollToTopWindow from '@components/ScrollToTopWindow';
 
 const queryClient = new QueryClient();
 
 // Component to conditionally render Contact and Footer
 const ConditionalFooterContact = () => {
   const location = useLocation();
-  const isDashboard = location.pathname.startsWith('/dashboard');
+  const isDashboard = location.pathname.startsWith('/contact');
   
   if (isDashboard) {
     return null; // Don't render Contact and Footer on dashboard routes
@@ -74,26 +74,27 @@ const App = () => {
   return (
     <ConfigProvider theme={{ ...antTheme }}>
       <Router>
+      <ScrollToTopWindow>
         <QueryClientProvider client={queryClient}>
           <Navigation />
           <MobileNav />
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/about" element={<AboutUs />} />
-            <Route path="/contact" element={<ContactUs />} />
             <Route path="/team" element={<OurTeam />} />
             <Route path="*" element={<Error404 />} />
-            <Route path="/dashboard" element={<Dashboard />}>
+            <Route path="/contact" element={<Dashboard />}>
               <Route index element={<ProjectRequest />} />
               <Route path="project-request" element={<ProjectRequest />} />
               <Route path="join-as-talent" element={<TalentRequest />} />
               <Route path="upload-proposal" element={<UploadProposal />} />
-              <Route path="logout" element={<Logout />} />
+              <Route path="enquires" element={<ContactUs />} />
             </Route>
           </Routes>
           <ConditionalFooterContact />
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
+        </ScrollToTopWindow>
       </Router>
     </ConfigProvider>
   );

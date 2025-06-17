@@ -1,12 +1,12 @@
 import {
-  LogoutOutlined,
   ProjectOutlined,
   UploadOutlined,
   UserOutlined,
   MenuOutlined,
   ShrinkOutlined,
   ArrowsAltOutlined,
-  CloseOutlined
+  CloseOutlined,
+  ContactsOutlined,
 } from '@ant-design/icons';
 
 import Sider from 'antd/es/layout/Sider';
@@ -20,10 +20,11 @@ import { useNavigate } from 'react-router';
 import ProjectRequest from '@components/DashboardData/_partials/ProjectRequest';
 import TalentRequest from '@components/DashboardData/_partials/JoinAsATalent';
 import UploadProposal from '@components/DashboardData/_partials/Proposals';
-import Logout from '@components/DashboardData/_partials/Logout';
+// import Logout from '@components/DashboardData/_partials/Logout';
+import ContactUs from './ContactUs';
 import Footer from '@components/Footer';
 
-const baseurl = '/dashboard/';
+const baseurl = '/contact/';
 export const items = [
   {
     label: 'Project',
@@ -47,11 +48,11 @@ export const items = [
     path: `${baseurl}upload-proposal`
   },
   {
-    label: 'Logout',
+    label: 'Enquires',
     key: '4',
-    icon: <LogoutOutlined />,
-    comp: <Logout />,
-    path: `${baseurl}logout`
+    icon: <ContactsOutlined />,
+    comp: <ContactUs />,
+    path: `${baseurl}enquires`
   }
 ];
 
@@ -111,7 +112,7 @@ const Dashboard = () => {
       <Layout.Header className='!fixed !z-100 !w-full '>
         <div className="flex items-center justify-between">
           <p className="text-sm text-center md:text-left md:text-2xl py-5 text-nowrap">
-            welcome to the Dashboard
+            Welcome to the Request Page
           </p>
           {/* Mobile menu button */}
           {isMobile && (

@@ -10,6 +10,7 @@ export interface TeamMemberProps {
     linkedin: string;
     twitter: string;
   };
+  imageSize?: string; // Optional prop for image size
 }
 
 interface TeamProps {
@@ -20,49 +21,13 @@ const defaultMembers: TeamMemberProps[] = [
   {
     teamImg: '/png/Akintola2.png',
     name: 'Akintola Oluwaseun',
-    position: 'Project Manager',
+    position: 'Product Manager',
     className: 'bg-[#3783FF52]',
     description:
       'Mr. Akintola Oluwaseun is a seasoned project manager with a track record of delivering complex projects on time and within budget. His expertise in agile methodologies has been instrumental in driving team success.',
     socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/akano-oluwasola',
-      twitter: 'https://twitter.com/johndoe'
-    }
-  },
-  {
-    teamImg: '/png/isabella.png',
-    name: 'Isabella',
-    position: 'Digital Marketer',
-    className: 'bg-[#FF8C0052]',
-    description:
-      'Miss Isabella Ngonadi has an experience in administrative support, customer support, career strategy and digital marketing skill to help grow businesses. ',
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/akano-oluwasola',
-      twitter: 'https://twitter.com/johndoe'
-    }
-  },
-  {
-    teamImg: '/png/Iyanu2.png',
-    name: 'Iyanu Ajimobi',
-    position: 'Backend Developer/Technical Lead',
-    className: 'bg-[#F6000052]',
-    description:
-      'Mr. Iyanu Ajimobi is a skilled backend developer with a deep understanding of system architecture and cloud technologies. His leadership in technical projects has been pivotal in achieving our goals.',
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/akano-oluwasola',
-      twitter: 'https://twitter.com/johndoe'
-    }
-  },
-  {
-    teamImg: '/png/israel.png',
-    name: 'Isreal Evwerhamre',
-    position: 'Backend Developer',
-    className: 'bg-[#F4909052]',
-    description:
-      'Mr Isreal Evwerhamre is a detail-oriented Back-end developer, proficient in Javasript, HTML, CSS, and Node.Js, with a passion for creating high performance web applications.',
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/akano-oluwasola',
-      twitter: 'https://twitter.com/johndoe'
+      linkedin: 'https://www.linkedin.com/in/oluwaseunakintola',
+      twitter: 'https://x.com/'
     }
   },
   {
@@ -73,22 +38,34 @@ const defaultMembers: TeamMemberProps[] = [
     description:
       'Mr. David Adesope is a creative product designer with a passion for crafting intuitive user interfaces. His designs have greatly improved the user experience of our products.',
     socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/akano-oluwasola',
-      twitter: 'https://twitter.com/johndoe'
+      linkedin: 'https://www.linkedin.com/in/david-adesope-237210223',
+      twitter: 'https://x.com/'
     }
   },
-
   {
-    teamImg: '/png/ify2.png',
-    name: 'Ifunanya Ugwoke',
-    position: 'Frontend Developer',
-    className: 'bg-[#FF8C0052]',
+    teamImg: '/png/Iyanu2.png',
+    name: 'Iyanu Ajimobi',
+    position: 'Backend Developer/Technical Lead',
+    className: 'bg-[#F6000052]',
     description:
-      'Miss. Ifunanya Ugwoke is a talented frontend developer known for her attention to detail and commitment to delivering high-quality code. Her work has significantly enhanced the performance of our web applications.',
+      'Mr. Iyanu Ajimobi is a skilled backend developer with a deep understanding of system architecture and cloud technologies. His leadership in technical projects has been pivotal in achieving our goals.',
     socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/akano-oluwasola',
-      twitter: 'https://twitter.com/johndoe'
+      linkedin: 'https://www.linkedin.com/in/i-yan-u',
+      twitter: 'https://x.com/'
     }
+  },
+  {
+    teamImg: '/png/israel.png',
+    name: 'Israel Evwerhamre',
+    position: 'Backend Developer',
+    className: 'bg-[#F4909052]',
+    description:
+      'Mr Isreal Evwerhamre is a detail-oriented Back-end developer, proficient in Javasript, HTML, CSS, and Node.Js, with a passion for creating high performance web applications.',
+    socialLinks: {
+      linkedin: 'https://www.linkedin.com/in/',
+      twitter: 'https://x.com/'
+    },
+    imageSize: '!object-cover'
   },
   {
     teamImg: '/png/uthman2.png',
@@ -98,10 +75,34 @@ const defaultMembers: TeamMemberProps[] = [
     description:
       'Mr. Adebari Uthman Titilope is a proficient frontend developer with expertise in modern web technologies. His contributions have been crucial in building responsive and user-friendly applications.',
     socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/akano-oluwasola',
-      twitter: 'https://twitter.com/johndoe'
+      linkedin: 'https://www.linkedin.com/in/adebari-uthman-titilope-377961260',
+      twitter: 'https://x.com/'
     }
-  }
+  },
+  {
+    teamImg: '/png/ify2.png',
+    name: 'Ifunanya Ugwoke',
+    position: 'Frontend Developer',
+    className: 'bg-[#FF8C0052]',
+    description:
+      'Miss. Ifunanya Ugwoke is a talented frontend developer known for her attention to detail and commitment to delivering high-quality code. Her work has significantly enhanced the performance of our web applications.',
+    socialLinks: {
+      linkedin: 'https://www.linkedin.com/in/ifunanya-chidimma-2702911b1',
+      twitter: 'https://x.com/'
+    }
+  },
+  {
+    teamImg: '/png/isabella.png',
+    name: 'Isabella Chiamaka',
+    position: 'Digital Marketer',
+    className: 'bg-[#FF8C0052]',
+    description:
+      'Miss Isabella Ngonadi has an experience in administrative support, customer support, career strategy and digital marketing skill to help grow businesses. ',
+    socialLinks: {
+      linkedin: 'https://www.linkedin.com/in/',
+      twitter: 'https://x.com/'
+    }
+  },
 ];
 
 const Team: React.FC<TeamProps> = ({ members = defaultMembers }) => {
@@ -117,6 +118,7 @@ const Team: React.FC<TeamProps> = ({ members = defaultMembers }) => {
             className={member.className}
             description={member.description}
             socialLinks={member.socialLinks}
+            imageSize={member.imageSize || ""}
           />
         ))}
       </div>

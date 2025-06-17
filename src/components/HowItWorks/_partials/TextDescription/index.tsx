@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 const HowItWorksTexts = () => {
   const navigate = useNavigate();
   const handleNavigationClick = () => {
-    navigate('/dashboard');
+    navigate('/contact');
   };
   const animationStates = {
     hidden: { opacity: 0, y: -50 },

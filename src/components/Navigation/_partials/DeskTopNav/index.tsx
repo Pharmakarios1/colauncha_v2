@@ -4,8 +4,8 @@ import ContactUs from '@pages/ContactUs';
 import OurTeam from '@pages/OurTeam';
 
 //third party libraries
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router';
+import { useState, useEffect } from 'react';
+import { useNavigate, Link, useLocation } from 'react-router';
 
 const menuItems = [
   {
@@ -36,8 +36,26 @@ const menuItems = [
 const DeskTopNav: React.FC = () => {
   const [current, setCurrent] = useState('home');
   const navigate = useNavigate();
+
+  const {pathname} = useLocation();
+
+  // useEffect to set the current menu item based on the current path
+  useEffect(() => {
+    console.log(pathname.split('/'));
+    let menuPath = pathname.split('/')[1];
+    if (menuPath === '') {
+      menuPath = 'home'; // Default to home if path is empty
+    }
+    const currentItem = menuItems.find(item => item.path === pathname || item.path === `/${menuPath}`);
+    if (currentItem) {
+      setCurrent(currentItem.key);
+    } else {
+      setCurrent('home'); // Default to home if no match found
+    }
+  }, [pathname]);
+
   //function to handle menu click
-  const handleMenuClick = (e: any) => {
+  const handleMenuClick = (e: { key: string; path: string }) => {
     setCurrent(e.key);
     navigate(e.path);
   };
