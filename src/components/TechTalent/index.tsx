@@ -67,20 +67,20 @@ const arrowAnimationStates = {
 };
 const TechTalent = () => {
   return (
-    <div className="w-full lg:w-[85%] mx-auto md:h-[80vh] ">
-      <div className="text-xl lg:text-2xl pl-1">Tech Talents</div>
+    <div className="w-full mt-4 lg:w-[95%] mx-auto md:h-[75vh]">
+      <div className="text-4xl lg:text-4xl !pl-5"><h1 className='!text-4xl !font-bold'>Tech Talents</h1></div>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-6">
         {techTalentData.map((talent, idx) => (
           <div
             key={talent.id}
-            className={`relative w-full lg:w-[100%] h-[250px] p-4 ${idx % 2 === 1 ? 'bg-[#3783FF]' : 'bg-red-500'} rounded-lg shadow-md hover:scale-102 transition-transform duration-300 ease-in-out`}
+            className={`relative w-full lg:w-[100%] h-[300px] p-4 ${idx % 2 === 1 ? 'bg-[#3783FF]' : 'bg-red-500'} rounded-[10%] shadow-md hover:scale-102 transition-transform duration-300 ease-in-out`}
             style={{
               backgroundImage: `url(${talent.image})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center'
             }}
           >
-            <div className="absolute inset-0 bg-black/10 bg-opacity-50 flex flex-col justify-center items-center text-white p-4 rounded-lg"></div>
+            <div className="absolute inset-0 bg-black/10 bg-opacity-20 flex flex-col justify-center items-center text-white p-4 rounded-[10%]"></div>
             <p className="absolute bottom-2 left-2 text-white bg-black/30 p-1 px-2 rounded-full">
               {talent.name}
             </p>
@@ -88,8 +88,8 @@ const TechTalent = () => {
         ))}
       </div>
       <div className="relative flex justify-end pr-6 w-full h-[250px]">
-        <Button type="primary" className=" h-[250px]  ">
-          View All Talents
+        <Button type="primary" className=" !h-[50px] !w-[130px] !rounded-full ">
+          View All
         </Button>
         <motion.div
           initial="initial"
@@ -99,7 +99,7 @@ const TechTalent = () => {
           variants={arrowAnimationStates}
           onHoverStart={() => {}}
           onHoverEnd={() => {}}
-          className="absolute right-44 -top-4"
+          className="absolute right-42 -top-3"
         >
           <img src="/png/arrow2.png" alt="" />
         </motion.div>

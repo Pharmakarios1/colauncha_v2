@@ -6,7 +6,7 @@ import { AnimatePresence } from 'framer-motion';
 const HowItWorks = () => {
   return (
     <AnimatePresence>
-      <PageWrapper className="w-full flex-col-reverse md:w-[75%] mx-auto">
+      <PageWrapper className="w-full flex-col-reverse md:w-[85%] mx-auto">
         <HowItWorksPictures />
         <HowItWorksTexts />
       </PageWrapper>

@@ -55,7 +55,7 @@ const JoinAsATalent = () => {
       animate={inView ? 'show' : 'hidden'}
       variants={animationStates}
       transition={{ duration: 0.9 }}
-      className="flex flex-col gap-8 mt-10 w-[90%] mx-auto md-full"
+      className="flex flex-col justify-center gap-8 mt-5 w-[90%] mx-auto md-full"
     >
       <Divider
         className="text-center !text-3xl md:!text-4xl mt-5 uppercase !text-black !font-bold !border-black"
@@ -63,22 +63,23 @@ const JoinAsATalent = () => {
       >
         Join as Talent
       </Divider>
-      <p className="!text-black text-xl md:text-3xl text-center md:text-left">
-        Fuel Innovation. Build Tomorrow's MVPs.
+      <p className="!text-black text-2xl whitespace-pre-wrap md:text-4xl text-center md:text-left">
+        Fuel Innovation.
+        Build Tomorrow's MVPs.
       </p>
-      <p className="text-black text-md mt-4 text-center md:text-left">
+      <p className="text-black text-xl mt-4 text-center md:text-left">
         {' '}
         Join us and be part of a community that values your skills and
         creativity. Our network of tech teams undergoes a rigorous screening and
         are matched based on the needs of each project
       </p>
 
-      <div className="relative">
+      <div className="relative flex justify-between">
         <Button
           onClick={handleNavigationClick}
           type="text"
           size="large"
-          className="!w-[90%] md:!w-[150px] mx-auto md:mx-0 !text-white !bg-[#F68600C2]"
+          className="!w-[90%] !rounded-full md:!w-[150px] mx-auto md:mx-0 !text-white !bg-[#F68600C2]"
         >
           Apply Now
         </Button>
@@ -89,7 +90,7 @@ const JoinAsATalent = () => {
           whileInView={'View'}
           exit={'outOfView'}
           transition={{ duration: 0.9 }}
-          className="hidden lg:block absolute right-40 top-1/2 transform -translate-y-1/2 translate-x-10"
+          className="hidden lg:block absolute right-55 top-[70%] transform -translate-y-1/2 translate-x-10"
         >
           <img src="/png/arrow3.png" alt="" />
         </motion.div>

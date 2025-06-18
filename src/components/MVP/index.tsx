@@ -27,9 +27,9 @@ const mvpData = [
 
 const MVP = () => {
   return (
-    <div className="my-10 md:mt-20 w-[90%]  md:w-[85%] mx-auto">
+    <div className="my-25 md:mt-20 w-[90%]  md:w-[85%] mx-auto">
       <div className="flex">
-        <h2 className="text-xl  font-bold mb-10">Built MVPs</h2>
+        <h2 className="text-4xl font-bold mb-10">Built MVPs</h2>
         <Link to="/mvp" className="ml-auto text-blue-600 hover:underline">
           View All
         </Link>

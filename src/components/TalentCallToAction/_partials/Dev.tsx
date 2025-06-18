@@ -19,11 +19,12 @@ const Dev = () => {
       initial="hidden"
       animate={inView ? 'show' : 'hidden'}
       variants={animationStates}
-      transition={{ duration: 0.9 }}className="flex flex-col gap-10 p-6 md:p-0 md:mt-20 ">
+      transition={{ duration: 0.9 }}
+      className="flex flex-col px-4 md:p-0 md:mt-10 ">
      <img
         src="/png/talentImg.png"
         alt="Developer"
-        className="w-full h-[450px] rounded-md"
+        className="object-cover rounded-md"
       />
     </modtion.div>
   );

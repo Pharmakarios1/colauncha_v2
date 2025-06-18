@@ -3,7 +3,7 @@ import MultiCardCarousel from './_partials/CardCarousel';
 const Testimonial = () => {
   return (
     <div
-      className="relative h-[60vh] bg-cover bg-center"
+      className="relative h-[60vh] bg-cover bg-center mb-20"
       style={{ backgroundImage: `url('/png/Clients.png')` }}
     >
        <div className="absolute inset-0 bg-black/60 p-5 md:p-10"> <h1 className="text-xl md:text-3xl font-bold text-white md:mt-5 text-center md:text-left ">

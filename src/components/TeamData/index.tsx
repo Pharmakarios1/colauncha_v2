@@ -27,7 +27,7 @@ const defaultMembers: TeamMemberProps[] = [
       'Mr. Akintola Oluwaseun is a seasoned project manager with a track record of delivering complex projects on time and within budget. His expertise in agile methodologies has been instrumental in driving team success.',
     socialLinks: {
       linkedin: 'https://www.linkedin.com/in/oluwaseunakintola',
-      twitter: 'https://x.com/'
+      twitter: 'https://x.com/Theoseun'
     }
   },
   {
@@ -51,7 +51,7 @@ const defaultMembers: TeamMemberProps[] = [
       'Mr. Iyanu Ajimobi is a skilled backend developer with a deep understanding of system architecture and cloud technologies. His leadership in technical projects has been pivotal in achieving our goals.',
     socialLinks: {
       linkedin: 'https://www.linkedin.com/in/i-yan-u',
-      twitter: 'https://x.com/'
+      twitter: 'https://x.com/__yandev__'
     }
   },
   {
@@ -62,8 +62,8 @@ const defaultMembers: TeamMemberProps[] = [
     description:
       'Mr Isreal Evwerhamre is a detail-oriented Back-end developer, proficient in Javasript, HTML, CSS, and Node.Js, with a passion for creating high performance web applications.',
     socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/',
-      twitter: 'https://x.com/'
+      linkedin: 'http://linkedin.com/in/israel-evwerhamre',
+      twitter: 'https://x.com/ogkpos'
     },
     imageSize: '!object-cover'
   },
@@ -88,7 +88,7 @@ const defaultMembers: TeamMemberProps[] = [
       'Miss. Ifunanya Ugwoke is a talented frontend developer known for her attention to detail and commitment to delivering high-quality code. Her work has significantly enhanced the performance of our web applications.',
     socialLinks: {
       linkedin: 'https://www.linkedin.com/in/ifunanya-chidimma-2702911b1',
-      twitter: 'https://x.com/'
+      twitter: 'https://x.com/Ifunayach35394'
     }
   },
   {
@@ -99,8 +99,8 @@ const defaultMembers: TeamMemberProps[] = [
     description:
       'Miss Isabella Ngonadi has an experience in administrative support, customer support, career strategy and digital marketing skill to help grow businesses. ',
     socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/',
-      twitter: 'https://x.com/'
+      linkedin: 'https://www.linkedin.com/in/isabellangonadi',
+      twitter: 'https://x.com/spicyy_amaka1'
     }
   },
 ];

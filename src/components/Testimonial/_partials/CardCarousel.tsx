@@ -48,11 +48,11 @@ const Card: React.FC<TestimonialCardProps> = ({
   imgurl,
   testimonial
 }) => (
-  <div className="flex flex-col h-[220px] bg-[#F600005E] p-6 rounded-lg shadow mx-2">
+  <div className="flex flex-col h-[280px] bg-[#fca1a1e7] p-6 rounded-lg shadow mx-3 mb-5">
     <div className="flex items-center mb-4 gap-5">
       <img src={imgurl} alt="" className="w-12 h-12 rounded-full" />
       <div className="flex flex-col">
-        <h2 className="text-base font-bold">{name}</h2>
+        <h2 className="text-base text-lg text-white font-bold">{name}</h2>
       </div>
     </div>
     <p className="text-base mt-4 text-gray-800">{testimonial}</p>
@@ -65,6 +65,7 @@ const MultiCardCarousel = () => (
     autoPlay={true}
     autoPlaySpeed={3000}
     infinite={true}
+    className={'w-3/4 mx-auto'}
   >
     {testimonialData.map((item) => (
       <Card key={item.id} name={item.name} testimonial={item.testimonial} imgurl={item.imgurl} />
