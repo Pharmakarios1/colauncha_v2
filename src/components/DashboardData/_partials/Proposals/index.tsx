@@ -32,7 +32,7 @@ const UploadProposal = () => {
   };
   return (
     <div>
-      <div className=" w-full lg:w-[80%] mx-auto grid grid-cols-1 gap-6 mt-4 md:px-20">
+      <div className=" w-full lg:w-[80%] mx-auto grid grid-cols-1 gap-6 mt-10 md:px-20">
         <h1 className="text-2xl font-bold text-center">Upload Proposal</h1>
         <Card>
           <p className="text-[12px] text-black text-center mt-4">

@@ -44,7 +44,7 @@ const ContactUs = () => {
             <img src="/gif/call.gif" alt="" className="w-14 h-20" />
             <div>
               <h3>info@colauncha.com</h3>
-              <p>+234 98356672867</p>
+              <p>+234 708 4274 918, +234 805 9770 443</p>
             </div>
           </div>
         </Card>

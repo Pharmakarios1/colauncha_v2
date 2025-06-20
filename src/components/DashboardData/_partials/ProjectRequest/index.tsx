@@ -130,7 +130,7 @@ const ProjectRequest = () => {
             ]}
           >
             <div className="flex flex-col items-start">
-              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='project_name'>Project Name</label>
+              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='project_name'>Project Name <span className="text-red-500">*</span></label>
               <Input size="large" placeholder="Project Name" />
             </div>
           </Form.Item>
@@ -139,7 +139,7 @@ const ProjectRequest = () => {
             rules={[{ required: true, message: 'Please enter your email' }]}
           >
             <div className="flex flex-col items-start">
-              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor="email">Email</label>
+              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor="email">Email <span className="text-red-500">*</span></label>
               <Input size="large" placeholder="Email" />
             </div>
           </Form.Item>
@@ -151,7 +151,7 @@ const ProjectRequest = () => {
             ]}
           >
             <div className="flex flex-col items-start">
-              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='phone'>Phone number</label>
+              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='phone'>Phone number <span className="text-red-500">*</span></label>
               <PhoneInput
                 size="large"
                 placeholder="Phone number"
@@ -170,7 +170,7 @@ const ProjectRequest = () => {
             ]}
           >
             <div className="flex flex-col items-start">
-              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='estimated_budget'>Budget (₦)</label>
+              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='estimated_budget'>Budget (₦) <span className="text-red-500">*</span></label>
               <Input
                 size="large"
                 placeholder="Estimated Budget"
@@ -185,7 +185,7 @@ const ProjectRequest = () => {
             ]}
           >
             <div className="flex flex-col items-start">
-              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='max_project_time'>Project Duration (Days)</label>
+              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='max_project_time'>Project Duration (Days) <span className="text-red-500">*</span></label>
               <Input size="large" placeholder="Duration (days) e.g 30days" />
             </div>
           </Form.Item>
@@ -196,7 +196,7 @@ const ProjectRequest = () => {
             ]}
           >
             <div className="flex flex-col items-start">
-              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='company_name'>Company Name</label>
+              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='company_name'>Company Name <span className="text-red-500">*</span></label>
               <Input size="large" placeholder="Company Name" />
             </div>
           </Form.Item>
@@ -210,7 +210,7 @@ const ProjectRequest = () => {
             ]}
           >
             <div className="flex flex-col items-start">
-              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='required_skills'>Skills</label>
+              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='required_skills'>Skills <span className="text-red-500">*</span></label>
               <Input
                 size="large"
                 placeholder="Required Skills e.g React, Node.js"
@@ -224,7 +224,7 @@ const ProjectRequest = () => {
             ]}
           >
             <div className="flex flex-col items-start">
-              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='country'>Country</label>
+              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='country'>Country <span className="text-red-500">*</span></label>
               <Input size="large" value={'Nigeria'} readOnly placeholder="Country" />
             </div>
           </Form.Item>
@@ -238,6 +238,9 @@ const ProjectRequest = () => {
             <Dragger {...uploadProps}>
               <p className="ant-upload-drag-icon">
                 <InboxOutlined />
+              </p>
+              <p className="ant-upload-text !text-[12px]">
+                Upload your project requirements document
               </p>
               <p className="ant-upload-text !text-[12px]">
                 Click or drag file to this area to upload
@@ -268,7 +271,7 @@ const ProjectRequest = () => {
             ]}
           >
             <div className="flex flex-col items-start">
-              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='description'>Description</label>
+              <label className="text-gray-500 pb-1 pl-1 whitespace-nowrap" htmlFor='description'>Project Description <span className="text-red-500">*</span></label>
               <Input.TextArea
                 size="large"
                 placeholder="Write a few words describing the project (30-500 characters)"

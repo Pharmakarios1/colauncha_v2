@@ -11,8 +11,8 @@ const OurTeam = () => {
         <p className="text-center text-xl">
           <span className="text-green-500">Enthusiastic</span> individuals{' '}
           <span className="text-red-500">working</span>{' '}
-          <span className="text-blue-500">together</span>
-          to take your ideas to <span className="text-yellow-300">life</span>
+          <span className="text-blue-500">together </span>
+          to take your ideas to <span className="text-yellow-500">life</span>
         </p>
       </div>
       {/* CEO */}
